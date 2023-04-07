@@ -64,7 +64,7 @@ create table Users (
 create table Orders (
 	OrdersId int(5) zerofill auto_increment not null,
 	TotalPrice int not null check (TotalPrice >= 0),
-	OrdersDate date not null default current_date(),
+	OrdersDate date not null default (current_date),
 	UsersId int(5) zerofill not null,
 	constraint PK_Orders primary key (OrdersId),
 	constraint FK_Users foreign key (UsersId) references Users(UsersId)
