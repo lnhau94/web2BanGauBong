@@ -1,23 +1,27 @@
-<?php
-$server = 'webbear.mysql.database.azure.com';
-$username = 'lnhau';
-$password = 'lnhau94';
-$database = 'webbear';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Teddy Bear Shop</title>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="stylesheet" href="CSS/Hau_Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <script src="JS/UI.js"></script>
+</head>
 
-$conn = new mysqli($server, $username, $password, $database) ;
-  
-    if ($result = $conn -> query("SELECT * FROM Product p join Image i on p.productId = i.productId")) {
-        echo "Returned rows are: " . $result -> num_rows ."<br>";
-        $i = 0;
-        while($i++ < $result -> num_rows){
-          $row = $result -> fetch_array();
-          $j = 0;
-          echo $row[1]." " . $row[2]."<img src=./img/".$row[8].">";
-          echo "<br>";
-          
-        }
+<body>
+    <?php include 'Templates/Header.php';?>
+    <?php include 'Templates/TopMenu.php';?>
+    <?php include 'Templates/Container.php';?>
+    <?php include 'Templates/Footer.php';?>
+    <?php include 'Templates/Login.php';?>
+    <?php include 'Templates/Register.php';?>
+
+    <?php include('util/route.php');
         
-        // Free result set
-        $result -> free_result();
-      }
-?>
+    ?>
+</body>
+
