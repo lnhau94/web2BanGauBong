@@ -1,0 +1,284 @@
+*{
+    font-family: 'Inter';
+    padding: 0;
+    margin: 0;
+}
+
+/* header */
+.header {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    height: 100px;
+    background: #FFF4F9;
+}
+
+
+/* Thanh tìm kiếm */
+#txtSearch {
+    margin-top: 54px;
+    float: right;
+    width:  40%;
+    height: 25px;
+    color: #FF7B9B;
+    border: 1px solid #FF7B9B;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 3px;
+    padding: 10px 10px;
+
+}
+
+::placeholder { 
+    color: #FF7B9B;
+}
+
+
+/* Nút tìm kiếm */
+#btnSearch {
+    font-size: 18px;
+    margin-top: 45px;
+    float: right;
+    width: 40px; 
+    height: 40px; 
+    color: #FF7B9B;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0,3s; 
+} 
+
+#btnSearch:hover {
+    color: #bf1c45;
+    transition-duration: 0,3s;
+}
+
+/* 
+#btnSearch {
+    text-shadow: 1px 1px 1px  #bf1c4591;
+} */
+
+/* Nút giỏ hàng */
+#btnCart {
+    font-size: 18px;
+    margin-top: 45px;
+    float: right;
+    width: 40px; 
+    height: 40px; 
+    color: #FF7B9B;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0,3s; 
+}
+
+#btnCart:hover {
+    color: #bf1c45;
+    transition-duration: 0,3s;
+}
+
+/* Nút đăng nhập */ 
+#btnLogin {
+    font-size: 18px;
+    margin-top: 45px;
+    margin-right: 30px;
+    float: right;
+    width: 40px; 
+    height: 40px; 
+    color: #FF7B9B;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0,3s; 
+}
+
+#btnLogin:hover {
+    color: #bf1c45;
+    transition-duration: 0,3s;
+}
+
+/* top menu */
+.topmenu {
+    height: 50px; 
+    width: 100%;   
+    background-color:black ;
+}
+
+.topmenu ul{
+    width: 100%;   
+    display: flex;
+    list-style-type: none;    
+    align-items: center;
+    justify-content: center;
+    background: #FF7B9B;
+    margin: 0;
+}
+
+.topmenu li a {
+    display: block;
+    padding: 16px 20px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.3s; 
+}
+
+.topmenu li a:hover {
+    display: block;
+    color: #FF7B9B;
+    background: #FFF4F9;
+    transition-duration: 0.3s; 
+}
+
+/* footer */
+.footer{
+    height: 200px;
+    background: #FF7B9B;
+}
+
+/* Màn hình thu nhỏ */
+@media only screen and (max-width: 1100px){
+    .topmenu {
+        display: none;
+    }
+    .header {
+        grid-template-columns: 10% 60% 30%;
+        height: 100px;
+        background: #FFF4F9;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    body{
+        width: 500px;
+    }
+    
+    #btnLogin {
+        margin-right: 10px;
+    }
+}
+  
+
+/* form Đăng nhập và đăng ký */
+#frmLogin  {
+    margin: 10% auto auto auto; 
+    display: block; 
+    width: 450px ;
+    height: 330px;
+    border-radius: 20px;
+    background: #FFF4F9;
+    
+}
+
+#frmRegister{
+    margin: 5% auto 10% auto; 
+    display: block; 
+    width: 450px ;
+    height: 560px;
+    border-radius: 20px;
+    background: #FFF4F9;
+    
+}
+
+.TopFrm {
+    height: 60px;
+    text-align: center;
+}
+
+.CenterFrm{
+    margin: 10px;
+    text-align: Center;
+}
+
+.BotFrm{
+    text-align: center;
+}
+
+/* label */
+.labLog {
+    Color: #FF7B9B;
+    float: left;
+    margin-left: 20px;
+}
+
+/* nhập dư liệu */
+.txtLog {
+    width: 385px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid #FF7B9B;
+    border-radius: 10px;
+    outline: none;
+}
+
+#eyecheck:checked~.fa-eye-slash {
+    display: none;
+}
+
+#eyecheck:checked~.fa-eye {
+    display: inline-block;
+}
+
+#eyecheck~.fa-eye {
+    display: none;
+}
+
+/* Sumbit */
+
+.btnSubmit {
+    width: 350px;
+    padding: 10px 20px;
+    margin:  10px  10px  10px 50px;
+    background-color: #FF7B9B;
+    border-radius: 10px;
+    border: none;
+    color:#FFF4F9;
+    font-Size: 18px;
+    transition-duration: 0.3s;
+}
+
+.btnSubmit:hover {
+    transition-duration: 0.3s;
+    background-color: #bf1c45;
+    cursor: pointer;
+}
+
+#btnCloseFrm{
+    font-size: 18px;
+    float: right;
+    width: 50px; 
+    height: 50px; 
+    color: #FF7B9B;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0,3s; 
+    font-size:24px;
+} 
+
+#btnCloseFrm:hover {
+    color: #bf1c45;
+    transition-duration: 0,3s;
+}
+
+/* nền đen che màn hình */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4);
+}
+/* animation */
+#frmLogin, #frmRegister{
+    animation: animatezoom 0.6s
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
