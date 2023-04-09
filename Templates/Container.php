@@ -1,5 +1,6 @@
 <div class="container">
+
     <?php
-    include 'view/banner.php';
+    include 'util/route.php';
     ?>
 </div>
