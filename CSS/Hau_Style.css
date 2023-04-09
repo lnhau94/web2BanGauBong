@@ -24,3 +24,7 @@
     text-decoration: none;
     text-align: center;
 }
+
+.hau-product-item > *{
+    display: block;
+}

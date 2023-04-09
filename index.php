@@ -19,9 +19,5 @@
     <?php include 'Templates/Footer.php';?>
     <?php include 'Templates/Login.php';?>
     <?php include 'Templates/Register.php';?>
-
-    <?php include('util/route.php');
-        
-    ?>
 </body>
 
