@@ -3,10 +3,10 @@
     <ul>
         <li class="hau-topmenu-item"><a href="./index.php">Home</a></li>
         <?php
-        include 'Entity/Category.php';
+        include_once 'Entity/Category.php';
             $cat = new Categories();
             foreach ($cat -> getCategories()  as $item) {
-                echo "<li class= 'hau-topmenu-item'><a href='/BANGAUBONG/?Category=". $item->getId()."'>".$item->getName()."</a></li>";
+                echo "<li class= 'hau-topmenu-item'><a href='/BANGAUBONG/Category=". $item->getId()."'>".$item->getName()."</a></li>";
             }
         ?>
         <li class= 'hau-topmenu-item'><a href="/about">About</a></li>
