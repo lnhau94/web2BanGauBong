@@ -63,6 +63,35 @@
             }
             return $this -> products;
         }
+
+        public function getNewProducts(){
+           $products = array();
+                $rs = $this -> getConnection() -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId order by p.ProductId desc limit 10");
+                if($rs->num_rows>0){
+                    while($row = $rs->fetch_assoc()){
+                        array_push($products ,
+                            new Product($row['ProductId'],$row['ProductName'],
+                                        $row['ProductPrice'],$row["ProductInventory"],
+                                        $row["ProductSize"],$row["ProductStatus"],
+                                        $row["CategoryId"], $row["ImageUrl"]));
+                    }
+                }
+            return $products;
+        }
+        public function getByCategoryId($categoryId){
+            $products = array();
+                $rs = $this -> getConnection() -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId where p.CategoryId = $categoryId");
+                if($rs->num_rows>0){
+                    while($row = $rs->fetch_assoc()){
+                        array_push($products ,
+                            new Product($row['ProductId'],$row['ProductName'],
+                                        $row['ProductPrice'],$row["ProductInventory"],
+                                        $row["ProductSize"],$row["ProductStatus"],
+                                        $row["CategoryId"], $row["ImageUrl"]));
+                    }
+                }
+            return $products;
+        }
     }
 
 ?>

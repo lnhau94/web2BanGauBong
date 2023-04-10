@@ -5,19 +5,19 @@
     <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
         <img src="img/banner1.jpeg" style="width:100%; height:400px;">
-        <div class="text">Caption Text</div>
+        <div class="text">Welcome</div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
         <img src="img/banner2.jpeg" style="width:100%; height:400px;">
-        <div class="text">Caption Two</div>
+        <div class="text">Welcome</div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
         <img src="img/banner3.jpeg" style="width:100%; height:400px;">
-        <div class="text">Caption Three</div>
+        <div class="text">Welcome</div>
     </div>
 
     <!-- Next and previous buttons -->
