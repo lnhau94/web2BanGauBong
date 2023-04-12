@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.hau-container-label{
+    background-color: #FF7B9B;
+    color: #fff;
+    display: block;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+
+.hau-topmenu-container{
+    display: flex;
+    background-color: #FF7B9B;
+    flex-direction: row;
+}
+
+.hau-topmenu-item{
+    text-align: center;
+    display: inline-flex;
+    width: 100px;
+    /* border: 1px solid aliceblue; */
+    color: #fff;
+    height: 50px;
+    overflow: hidden;
+}
+
+.hau-topmenu-item a{
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
