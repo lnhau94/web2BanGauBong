@@ -1,13 +1,13 @@
 <?php
 // Lấy id của sản phẩm muốn xóa
-$idsp = $_GET['sid'];
+$ProductId = $_GET['sid'];
 // echo $id;
 
 // Kết nối
 require_once 'ketnoi.php';
 
 // Câu lệnh sql
-$xoa_sql = "DELETE FROM sanpham WHERE masp=$idsp";
+$xoa_sql = "DELETE FROM product WHERE ProductId=$ProductId";
 
 mysqli_query($conn, $xoa_sql);
 //echo "<h1>Xóa thành công</h1>";

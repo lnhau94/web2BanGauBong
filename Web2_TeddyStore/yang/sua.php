@@ -1,12 +1,12 @@
 <?php
 // Lấy id của sản phẩm muốn sửa
-$idsp = $_GET['sid'];
+$ProductId = $_GET['sid'];
 
 // Kết nối
 require_once 'ketnoi.php';
 
-// Câu lệnh để lấy thông tin của sản phẩm có masp = $idsp
-$sua_sql = "SELECT * FROM sanpham WHERE masp = $idsp";
+// Câu lệnh để lấy thông tin của sản phẩm có ProductId = $ProductId
+$sua_sql = "SELECT * FROM product WHERE ProductId = $ProductId";
 
 $result = mysqli_query($conn, $sua_sql);
 $row = mysqli_fetch_assoc($result);
@@ -19,7 +19,6 @@ $row = mysqli_fetch_assoc($result);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa sản phẩm</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -31,57 +30,54 @@ $row = mysqli_fetch_assoc($result);
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Sửa sản phẩm</title>
 </head>
 
 <body>
     <div class="container">
         <h1>Sửa sản phẩm</h1>
-        <form action="capnhat.php" method="post">
-            <input type="hidden" name="sid" value="<?php echo $idsp;?>" id="">
+        <!-- <form action="them.php" method="post"> -->
+        <form action="capnhat.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="sid" value="<?php echo $ProductId; ?>" id="">
             <div class="form-group">
-                <label for="tensp">Tên sản phẩm</label>
-                <input type="text" id="tensp" name="tensp" class="form-control"
-                value="<?php echo $row['tensp']?>">
+                <label for="ProductName">Tên sản phẩm</label>
+                <input type="text" id="ProductName" name="ProductName" class="form-control"
+                value="<?php echo $row['ProductName']?>">
             </div>
             <div class="form-group">
-                <label for="hinhanh">Hình ảnh</label>
-                <input type="text" id="hinhanh" name="hinhanh" class="form-control"
-                value="<?php echo $row['hinhanh']?>">
+                <label for="fileToUpload">Hình ảnh</label>
+                <input type="file" name="fileToUpload" id="fileToUpload" class="form-control"
+                value="<?php echo $row['fileToUpload']?>">
             </div>
             <div class="form-group">
-                <label for="gia">Giá</label>
-                <input type="text" id="gia" name="gia" class="form-control"
-                value="<?php echo $row['gia']?>">
+                <label for="ProductPrice">Giá</label>
+                <input type="text" id="ProductPrice" name="ProductPrice" class="form-control"
+                value="<?php echo $row['ProductPrice']?>">
             </div>
             <div class="form-group">
-                <label for="khohang">Kho hàng</label>
-                <input type="text" id="khohang" name="khohang" class="form-control"
-                value="<?php echo $row['khohang']?>">
+                <label for="ProductInventory">Kho hàng</label>
+                <input type="text" id="ProductInventory" name="ProductInventory" class="form-control"
+                value="<?php echo $row['ProductInventory']?>">
             </div>
             <div class="form-group">
-                <label for="kichthuoc">Kích thước</label>
-                <input type="text" id="kichthuoc" name="kichthuoc" class="form-control"
-                value="<?php echo $row['kichthuoc']?>">
+                <label for="ProductSize">Kích thước</label>
+                <input type="text" id="ProductSize" name="ProductSize" class="form-control"
+                value="<?php echo $row['ProductSize']?>">
             </div>
             <div class="form-group">
-                <label for="trangthai">Trạng thái</label></br>
-                <select id="trangthai" name="trangthai" class="form-control"
-                value="<?php echo $row['trangthai']?>">
+                <label for="ProductStatus">Trạng thái</label></br>
+                <select id="ProductStatus" name="ProductStatus" class="form-control"
+                value="<?php echo $row['ProductStatus']?>">
                     <option value="Đang bán">Đang bán</option>
                     <option value="Ngừng kinh doanh">Ngừng kinh doanh</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="maloai">Mã loại</label>
-                <input type="text" id="maloai" name="maloai" class="form-control"
-                value="<?php echo $row['maloai']?>">
+                <label for="CategoryName">Loại</label>
+                <input type="text" id="CategoryName" name="CategoryName" class="form-control"
+                value="<?php echo $row['CategoryName']?>">
             </div>
-            <div class="form-group">
-                <label for="loai">Loại</label>
-                <input type="text" id="loai" name="loai" class="form-control"
-                value="<?php echo $row['loai']?>">
-            </div>
-            <button class="btn btn-success">Lưu</button>
+            <button name="submit" class="btn btn-success">Cập nhật</button>
         </form>
     </div>
 </body>

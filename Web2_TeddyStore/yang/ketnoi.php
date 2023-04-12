@@ -1,3 +1,3 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "qlcf");
+$conn = mysqli_connect("localhost", "root", "", "webbear");
 ?>

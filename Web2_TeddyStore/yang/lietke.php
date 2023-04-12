@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sản phẩm</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -17,17 +16,17 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Danh sách sản phẩm</title>
 </head>
 
 <body>
     <div class="container">
         <h1>Danh sách sản phẩm</h1>
-
         <!-- Nút để mở Modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             Thêm sản phẩm
-        </button></br>
-
+        </button>
+        <!-- <a href="them.php" class="btn btn-primary">Thêm sản phẩm</a> -->
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -37,7 +36,6 @@
                     <th>Kho hàng</th>
                     <th>Kích thước</th>
                     <th>Trạng thái</th>
-                    <th>Mã loại</th>
                     <th>Loại</th>
                     <th>Thao tác</th>
                 </tr>
@@ -48,29 +46,39 @@
                 require_once 'ketnoi.php';
 
                 // Câu lệnh
-                $lietke_sql = "SELECT * FROM sanpham";
+                $lietke_sql = "SELECT * FROM product";
 
                 // Thực thi câu lệnh
-                $result = mysqli_query($conn, $lietke_sql);
+                $lietke_result = mysqli_query($conn, $lietke_sql);
+                $row_lietke = mysqli_fetch_array($lietke_result);
+
+                $maloai_sql = "SELECT * FROM category";
+                $maloai_result = mysqli_query($conn, $maloai_sql);
+                $row_maloai = mysqli_fetch_array($maloai_result);
 
                 // Duyệt qua result và in ra
-                while ($r = mysqli_fetch_assoc($result)) {
+                // while ($r = mysqli_fetch_assoc($lietke_result)) {
+                //     while ($rr = mysqli_fetch_assoc($maloai_result)) {
+                //         if ($row_lietke['CategoryId'] = $row_maloai['CategoryId']) {
+                //             $CategoryName == $row_maloai['CategoryName'];
+                //         }
+                //     }
+                //     echo $r['ProductName'] . " - " . $r['ProductPrice'] . " - " . $r['ProductInventory'] . " - " . $r['ProductSize'] . " - " . $r['ProductStatus'] . " - " . $CategoryName;
+                // }
+                while ($r = mysqli_fetch_assoc($lietke_result)) {
                 ?>
+                    <!-- echo $r['ProductName'] . " - " . $r['ProductPrice'] . " - " . $r['ProductInventory'] . " - " . $r['ProductSize'] . " - " . $r['ProductStatus'] . " - " . $r['CategoryId']; -->
                     <tr>
-                        <td><?php echo $r['tensp']; ?></td>
-                        <td><img width="460" height="345" class="img-fluid" src="anh/<?php echo $r['hinhanh'];?>"></td>
-                        <td><?php echo $r['gia']; ?></td>
-                        <td><?php echo $r['khohang']; ?></td>
-                        <td><?php echo $r['kichthuoc']; ?></td>
-                        <td><?php echo $r['trangthai']; ?></td>
-                        <td><?php echo $r['maloai']; ?></td>
-                        <td><?php
-                            $i = 0;
-                            
-                        ?></td>
+                        <td><?php echo $r['ProductName']; ?></td>
+                        <td><?php echo $r['fileToUpload']; ?></td>
+                        <td><?php echo $r['ProductPrice']; ?></td>
+                        <td><?php echo $r['ProductInventory']; ?></td>
+                        <td><?php echo $r['ProductSize']; ?></td>
+                        <td><?php echo $r['ProductStatus']; ?></td>
+                        <td><?php echo $r['CategoryId']; ?></td>
                         <td>
-                            <a href="sua.php?sid=<?php echo $r['masp']; ?>" class="btn btn-info">Sửa</a>
-                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm?');" href="xoa.php?sid=<?php echo $r['masp']; ?>" class="btn btn-danger">Xóa</a>
+                            <a href="sua.php?sid=<?php echo $r['ProductId']; ?>" class="btn btn-info">Sửa</a>
+                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm?');" href="xoa.php?sid=<?php echo $r['ProductId']; ?>" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
                 <?php
@@ -79,7 +87,6 @@
             </tbody>
         </table>
     </div>
-
     <!-- The Modal -->
     <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -93,49 +100,46 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="them.php" method="post">
+                    <form action="them.php" method="post" enctype="multipart/form-data">
+
                         <div class="form-group">
-                            <label for="tensp">Tên sản phẩm</label>
-                            <input type="text" id="tensp" name="tensp" class="form-control">
+                            <label for="ProductName">Tên sản phẩm</label>
+                            <input type="text" id="ProductName" name="ProductName" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="hinhanh">Hình ảnh</label>
-                            <input type="file" name="hinhanh" class="form-control">
+                            <label for="fileToUpload">Hình ảnh</label>
+                            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="gia">Giá</label>
-                            <input type="text" id="gia" name="gia" class="form-control">
+                            <label for="ProductPrice">Giá</label>
+                            <input type="text" id="ProductPrice" name="ProductPrice" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="khohang">Kho hàng</label>
-                            <input type="text" id="khohang" name="khohang" class="form-control">
+                            <label for="ProductInventory">Kho hàng</label>
+                            <input type="text" id="ProductInventory" name="ProductInventory" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="kichthuoc">Kích thước</label>
-                            <input type="text" id="kichthuoc" name="kichthuoc" class="form-control">
+                            <label for="ProductSize">Kích thước</label>
+                            <input type="text" id="ProductSize" name="ProductSize" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="trangthai">Trạng thái</label></br>
-                            <select id="trangthai" name="trangthai" class="form-control">
+                            <label for="ProductStatus">Trạng thái</label></br>
+                            <select id="ProductStatus" name="ProductStatus" class="form-control">
                                 <option value="Đang bán">Đang bán</option>
                                 <option value="Ngừng kinh doanh">Ngừng kinh doanh</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="maloai">Mã loại</label>
-                            <input type="text" id="maloai" name="maloai" class="form-control">
+                            <label for="CategoryName">Loại</label>
+                            <input type="text" id="CategoryName" name="CategoryName" class="form-control">
                         </div>
-                        <div class="form-group">
-                            <label for="loai">Loại</label>
-                            <input type="text" id="loai" name="loai" class="form-control">
-                        </div>
-                        <button class="btn btn-success">Thêm</button>
+                        <button name="submit" class="btn btn-success">Thêm</button>
                     </form>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
             </div>
