@@ -5,7 +5,7 @@ function render($id){
     echo '<div class="hau-product-view-container">';
     foreach ($ps->getByCategoryId($id) as $item) {
         $s = new ProductView($item);
-        echo $s->show();
+        echo $s->showInCate();
     }
     echo '</div>';
 }
