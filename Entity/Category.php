@@ -1,10 +1,10 @@
 <?php
-    require "util/dbconnect.php";
+    require_once "util/dbconnect.php";
     class Category extends DBConnect{
         private $name;
         private $id;
 
-        public function __construct($name, $id){
+        public function __construct($name="", $id=""){
             $this->name = $name;
             $this->id = $id;
         }

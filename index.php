@@ -7,6 +7,8 @@
     <title>The Teddy Bear Shop</title>
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/Hau_Style.css">
+    <link rel="stylesheet" href="CSS/Hau-Product.css">
+    <link rel="stylesheet" href="CSS/Hau-product-page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <script src="JS/UI.js"></script>
@@ -19,9 +21,5 @@
     <?php include 'Templates/Footer.php';?>
     <?php include 'Templates/Login.php';?>
     <?php include 'Templates/Register.php';?>
-
-    <?php include('util/route.php');
-        
-    ?>
 </body>
 

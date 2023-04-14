@@ -1,0 +1,40 @@
+
+.hau-product-container{
+    background-color: #FFF4F9;
+    overflow-x: scroll;
+    display: flex;
+}
+
+
+.hau-product-item{
+    display: inline-block;
+    border: 1px solid #FF7B9B;
+    margin: 20px;
+}
+
+
+.hau-product-item > *{
+    margin: 10px;
+}
+
+.hau-product-item-img{
+    margin: 0px;
+    width: 300px;
+    height: 350px;
+}
+
+.hau-product-item-name  {
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+}
+.hau-product-item-price  {
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+}
+
+.hau-product-item label{
+    text-align: center;
+    color: #FF7B9B;
+}

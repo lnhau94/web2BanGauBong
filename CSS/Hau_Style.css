@@ -3,6 +3,18 @@
     margin: 0;
 }
 
+
+.hau-container-label{
+    background-color: #FF7B9B;
+    color: #fff;
+    display: block;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+
 .hau-topmenu-container{
     display: flex;
     background-color: #FF7B9B;
