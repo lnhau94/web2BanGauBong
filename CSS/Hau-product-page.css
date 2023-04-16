@@ -1,3 +1,30 @@
+.hau-pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hau-pagination-item{
+    padding: 2px;
+    text-align: center;
+    list-style-type: none;
+    display: inline-flex;
+    width: 30px;
+    background-color: #f2f2f2;
+    color: #FF7B9B;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.current{
+    background-color: #FF7B9B;
+    color: #f2f2f2;
+}
+
+
+
 .products-inpage{
     display: grid;
     grid-template-columns: 80% 20%;

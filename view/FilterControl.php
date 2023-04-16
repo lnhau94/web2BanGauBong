@@ -1,5 +1,5 @@
 <?php
-    include_once 'Entity/Category.php';
+    include_once __DIR__.'/../Entity/Category.php';
     function renderFilter(){
         echo '<div class="hau-control-container">';
             echo '<div class="products-inpage">';
@@ -13,8 +13,8 @@
                       </select>';
             echo '</div>';
 
-            echo '<button class="hau-search-button">Search <i class="fa-solid fa-magnifying-glass"></i></button>';
             echo '<input type="text" name="hau-search-field" placeholder="Nhập tên sản phẩm muốn tìm">';
+            echo '<button class="hau-search-button">Search <i class="fa-solid fa-magnifying-glass"></i></button>';
 
             echo '<div>';
                 echo '<label>Category</label>';
