@@ -1,24 +1,23 @@
 <?php 
-    include 'Entity/Product.php';
+    include_once 'Entity/Product.php';
     class ProductView {
-        private $name;
-        private $imgURL;
-        private $price;
+        private $product;
 
-        public function __construct($product) {
-            $this -> name = $product->getName();
-            $this -> imgURL = $product->getImgURL();
-            $this -> price = $product->getPrice();
+        public function __construct(Product $product) {
+            $this->product = $product;
         }
 
-        public function show(){
+        public function showInCatalog(){
             return "
                 <div class='hau-product-item'>
-                    <img class='hau-product-item-img' src='img/". $this->imgURL. "'style = {width: 300px; height: 350px;}>
-                    <label class='hau-product-item-name'>".$this->name."</label>
-                    <label class='hau-product-item-price'>".$this->price."</label>
+                    <img class='hau-product-item-img' src='img/". $this->product->getImgURL() . "'style = {width: 300px; height: 350px;}>
+                    <label class='hau-product-item-name'>".$this->product->getName()."</label>
+                    <label class='hau-product-item-price'>".$this->product->getPrice()."</label>
                 </div>
             ";
+        }
+        public function showInProductPage(){
+
         }
     }
 ?>

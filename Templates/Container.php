@@ -1,6 +1,5 @@
 <div class="container">
-
     <?php
-    include 'util/route.php';
+    include 'Controller/PageController.php';
     ?>
 </div>

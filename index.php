@@ -21,5 +21,8 @@
     <?php include 'Templates/Footer.php';?>
     <?php include 'Templates/Login.php';?>
     <?php include 'Templates/Register.php';?>
+    <style>
+        <?php include 'CSS/Hau_Style.css';?>
+    </style>
 </body>
 

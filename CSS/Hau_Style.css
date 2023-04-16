@@ -19,13 +19,16 @@
     display: flex;
     background-color: #FF7B9B;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .hau-topmenu-item{
+    margin-top: 15px;
+    margin-left: 5px;
     text-align: center;
     display: inline-flex;
     width: 100px;
-    /* border: 1px solid aliceblue; */
     color: #fff;
     height: 50px;
     overflow: hidden;
