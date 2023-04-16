@@ -1,4 +1,5 @@
 <?php
+    include_once 'util/dbconnect.php';
     class Product extends DBConnect{
         private $id;
         private $name;
@@ -90,6 +91,36 @@
                                         $row["CategoryId"], $row["ImageUrl"]));
                     }
                 }
+            return $products;
+        }
+        public function getAllProduct(){
+            $products = array();
+            $rs = $this -> getConnection()
+                        -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId");
+            if($rs->num_rows>0){
+                while($row = $rs->fetch_assoc()){
+                    array_push($products ,
+                        new Product($row['ProductId'],$row['ProductName'],
+                            $row['ProductPrice'],$row["ProductInventory"],
+                            $row["ProductSize"],$row["ProductStatus"],
+                            $row["CategoryId"], $row["ImageUrl"]));
+                }
+            }
+            return $products;
+        }
+        public function getProduct($page = 1,$productCount=5, $categories = "('Chó Bông')"){
+            $products = array();
+            $rs = $this -> getConnection()
+                -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId ");
+            if($rs->num_rows>0){
+                while($row = $rs->fetch_assoc()){
+                    array_push($products ,
+                        new Product($row['ProductId'],$row['ProductName'],
+                            $row['ProductPrice'],$row["ProductInventory"],
+                            $row["ProductSize"],$row["ProductStatus"],
+                            $row["CategoryId"], $row["ImageUrl"]));
+                }
+            }
             return $products;
         }
     }

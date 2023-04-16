@@ -1,11 +1,18 @@
+.products-inpage{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.products-inpage label{
+    font-size: 0.8rem;
+}
+
 .hau-product-view{
     display: grid;
-    grid-template-columns: 15% auto;
+    grid-template-columns: 20% auto;
 }
 
 .hau-control-container{
-    display: flex;
-    flex-direction: column;
 }
 
 .hau-product-view-container{
