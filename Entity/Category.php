@@ -1,5 +1,5 @@
 <?php
-    require_once "util/dbconnect.php";
+    require_once __DIR__.'/../util/dbconnect.php';
     class Category extends DBConnect{
         private $name;
         private $id;
