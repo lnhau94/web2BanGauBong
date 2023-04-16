@@ -1,5 +1,5 @@
 <?php
-    include_once 'util/dbconnect.php';
+    include_once '../util/dbconnect.php';
     class Product extends DBConnect{
         private $id;
         private $name;
