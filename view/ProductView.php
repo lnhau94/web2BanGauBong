@@ -1,5 +1,5 @@
 <?php 
-    include 'Entity/Product.php';
+    include_once 'Entity/Product.php';
     class ProductView {
         private $product;
 
@@ -7,7 +7,7 @@
             $this->product = $product;
         }
 
-        public function showInCate(){
+        public function showInCatalog(){
             return "
                 <div class='hau-product-item'>
                     <img class='hau-product-item-img' src='img/". $this->product->getImgURL() . "'style = {width: 300px; height: 350px;}>
