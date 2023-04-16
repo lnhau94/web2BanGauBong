@@ -1,6 +1,7 @@
 <?php
   require_once './Users.php';
   require_once './OrderDetail.php';
+  require_once './Product.php';
   require_once '../util/dbconnect.php';
   class Order extends DBConnect {
     private $orderId;
@@ -66,36 +67,44 @@
     public function setStatus($status) {
       $this->status = $status;
     }
-}
+  }
   class Orders extends DBConnect{
     private $orders;
-    private $orderdetail;
+    private $orderdetails;
+    private $products;
     public function getOrders(){
       if ($this -> orders == null){
         $this -> orders = array();
         $connect = $this -> getConnection();
-        $rs_orders = $connect -> query("select * from category order by CategoryId asc");
+        $rs_orders = $connect -> query("select * from orders order by OrdersId asc");
         if ($rs_orders -> num_rows > 0){
           while ($rows_orders = $rs_orders -> fetch_assoc()){
-            array_push($this -> orders, $rows_orders['CategoryId']);
-            echo '<br>';
-            $rs_orderdetail = $connect -> query("select * from product where CategoryId = ".$rows_orders['CategoryId']);
-            if ($this -> orderdetail == null){
-              $this -> orderdetail = array();
-              if ($rs_orderdetail -> num_rows > 0){
-                while ($rows_orderdetail = $rs_orderdetail -> fetch_assoc()){
-                  array_push($this -> orderdetail, $rows_orderdetail['ProductId']);
+            $rs_orderdetails = $connect -> query("select * from orderdetail where OrdersId = ".$rows_orders['OrdersId']);
+            if ($this -> orderdetails == null){
+              $this -> orderdetails = array();
+              if ($rs_orderdetails -> num_rows > 0){
+                while ($rows_orderdetails = $rs_orderdetails -> fetch_assoc()){
+                  if ($this -> products == null) {
+                    $this -> products = array();
+                    $rs_products = $connect -> query("select p.*, i.ImageUrl from product p inner join image i on i.ProductId = p.product where p.ProductId = ".$rows_orderdetails['ProductId']);
+                    if ($rs_products -> num_rows > 0) {
+                      while ($rows_products = $rs_products -> fetch_assoc()) {
+                        array_push($this -> products, new Product($rows_products['ProductId'],$rows_products['ProductName'],
+                                                                  $rows_products['ProductPrice'],$rows_products['ProductInventory'],$rows_products['ProductSize'],
+                                                                  $rows_products['ProductStatus'],$rows_products['CategoryId'],$rows_products['ImageUrl']));
+                      }
+                    }
+                  }
+                  array_push($this -> orderdetails, new OrderDetail($rows_orderdetails['OrdersId'],$this -> products,$rows_orderdetails['OrderQuantity']));
                 }
-                print_r($this -> orders);
-                print_r($this -> orderdetail);
-                $this -> orderdetail = array();
-                $this -> orders = array();
+                array_push($this -> orders, new Order($rows_orders['OrdersId'],$rows_orders['TotalPrice'],
+                                                      $rows_orders['OrdersDate'], $rows_orders['UsersId'], $rows_orders['Status'],$this -> orderdetails));
               }
             }
-            echo '<br>';
           }
         }
       }
+      print_r($this -> orders);
     }
   }
   $test = new Orders();
