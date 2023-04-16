@@ -2,7 +2,7 @@
   require_once './Users.php';
   require_once './OrderDetail.php';
   require_once './Product.php';
-  require_once '../util/dbconnect.php';
+  include_once '../util/dbconnect.php';
   class Order extends DBConnect {
     private $orderId;
     private $totalPrice;
@@ -86,7 +86,7 @@
                 while ($rows_orderdetails = $rs_orderdetails -> fetch_assoc()){
                   if ($this -> products == null) {
                     $this -> products = array();
-                    $rs_products = $connect -> query("select p.*, i.ImageUrl from product p inner join image i on i.ProductId = p.product where p.ProductId = ".$rows_orderdetails['ProductId']);
+                    $rs_products = $connect -> query("select p.*, i.ImageUrl from product p inner join image i on i.ProductId = p.ProductId where p.ProductId = ".$rows_orderdetails['ProductId']);
                     if ($rs_products -> num_rows > 0) {
                       while ($rows_products = $rs_products -> fetch_assoc()) {
                         array_push($this -> products, new Product($rows_products['ProductId'],$rows_products['ProductName'],
