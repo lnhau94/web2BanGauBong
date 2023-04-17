@@ -13,6 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <script src="JS/UI.js"></script>
     <script src="JS/ajax.js"></script>
+    <script src="JS/Hau-UI-Control.js"></script>
 </head>
 
 <body>
