@@ -6,17 +6,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $param = explode('&',$url['query']);
     $page = explode("=",$param[0])[1];
     $productCount = explode("=",$param[1])[1];
-//    $categories = explode("=",$param[2])[1];
+    $categories = explode("=",$param[2])[1];
+    $name = urldecode(explode("=",$param[3])[1]);
+    $minPrice = explode("=",$param[4])[1];
+    $maxPrice = explode("=",$param[5])[1];
     if (empty($page)) {
         $page = 1;
     }
-    if (empty($categories)) {
-        $categories = "('1','2')";
+    if (empty($categories) || $categories == "()") {
+        $categories = "('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19')";
     }
     if (empty($productCount)) {
         $productCount = 5;
     }
-    showAll($page,$productCount,$categories);
+    if (empty($name)) {
+        $name = "";
+    }
+    if (empty($minPrice)) {
+        $minPrice = 0;
+    }
+    if (empty($maxPrice)) {
+        $maxPrice = 1000000;
+    }
+    showAll($page,$productCount,$categories,$name,$minPrice,$maxPrice);
 }
 //    $page = 1;
 //    $categories = "('1','2')";

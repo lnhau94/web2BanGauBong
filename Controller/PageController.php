@@ -22,7 +22,7 @@ if(str_contains($target,"product")){
     if(sizeof($arr) == 1){
         echo "<div class='hau-product-view'>";
         renderFilter();
-        showAll(1,5,"('1')");
+        showAll(1,5);
         echo "</div>";
     }
 }

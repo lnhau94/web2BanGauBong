@@ -74,10 +74,33 @@ class Products extends DBConnect{
         return $products;
     }
 
-    public function getProductCount($page = 1,$productCount=5, $categories = "('1','2')"){
+    public function advSearch($page, $productCount = 5,$categories = "('1','2','3','4','5','6','7','8','9','10')",$name="",$minPrice=0,$maxPrice=1000000){
+        $products = array();
         $rs = $this -> getConnection()
-            -> query("select count(p.ProductId) from Product p WHERE p.CategoryId in ".$categories.
-                " order by p.ProductId ");
+            -> query($this->selectQuery." WHERE p.CategoryId in ".$categories." 
+                                 and p.ProductName like n'%".$name."%'  
+                                 and p.ProductPrice between ".$minPrice." and ".$maxPrice." 
+                                 order by p.ProductId limit ".$productCount*($page-1).", ".$productCount);
+        if($rs->num_rows>0){
+            while($row = $rs->fetch_assoc()){
+                array_push($products,$this->productFromRow($row));
+            }
+        }
+        return $products;
+    }
+
+    public function getProductCount($page = 1,$productCount=5, $categories = "('1','2')",$name="",$minPrice=0,$maxPrice=1000000){
+        $queryString = "select count(p.ProductId) from Product p WHERE p.CategoryId in ".$categories
+
+                                 ;
+        if ($name != ""){
+            $queryString = $queryString." and p.ProductName like n'%".$name."%' ";
+        }
+        $queryString = $queryString." and p.ProductPrice between ".$minPrice." and ".$maxPrice." 
+                                        order by p.ProductId ";
+
+        $rs = $this -> getConnection()
+            -> query($queryString);
         $c = -1;
         if($rs->num_rows>0){
             $data = $rs->fetch_array();
