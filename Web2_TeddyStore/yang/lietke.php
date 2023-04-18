@@ -111,11 +111,11 @@
                         </div>
                         <div class="form-group">
                             <label for="ProductPrice">Giá</label>
-                            <input type="text" id="ProductPrice" name="ProductPrice" class="form-control">
+                            <input type="number" min="0" id="ProductPrice" name="ProductPrice" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="ProductInventory">Kho hàng</label>
-                            <input type="text" id="ProductInventory" name="ProductInventory" class="form-control">
+                            <input type="number" min="0" id="ProductInventory" name="ProductInventory" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="ProductSize">Kích thước</label>

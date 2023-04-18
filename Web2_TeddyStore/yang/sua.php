@@ -44,16 +44,12 @@ $row = mysqli_fetch_assoc($result);
                 <input type="text" id="ProductName" name="ProductName" class="form-control" value="<?php echo $row['ProductName'] ?>">
             </div>
             <div class="form-group">
-                <label for="fileToUpload">Hình ảnh</label>
-                <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" value="<?php echo $row['fileToUpload'] ?>">
-            </div>
-            <div class="form-group">
                 <label for="ProductPrice">Giá</label>
-                <input type="text" id="ProductPrice" name="ProductPrice" class="form-control" value="<?php echo $row['ProductPrice'] ?>">
+                <input type="number" min="0" id="ProductPrice" name="ProductPrice" class="form-control" value="<?php echo $row['ProductPrice'] ?>">
             </div>
             <div class="form-group">
                 <label for="ProductInventory">Kho hàng</label>
-                <input type="text" id="ProductInventory" name="ProductInventory" class="form-control" value="<?php echo $row['ProductInventory'] ?>">
+                <input type="number" min="0" id="ProductInventory" name="ProductInventory" class="form-control" value="<?php echo $row['ProductInventory'] ?>">
             </div>
             <div class="form-group">
                 <label for="ProductSize">Kích thước</label>
