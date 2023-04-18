@@ -24,6 +24,8 @@ if(str_contains($target,"product")){
         renderFilter();
         showAll(1,5);
         echo "</div>";
+    }else{
+        showProductDetail($arr[1]);
     }
 }
 

@@ -27,14 +27,22 @@
     0%{
         transform: translate(var(--start-X),var(--start-Y));
     }
+    90%{
+        --end-W: 30px;
+        --end-H: 30px;
+    }
     100%{
         transform: translate(-10px,-10px);
-        z-index: 0;
+        z-index: -1;
+        --end-W: 0px;
+        --end-H: 0px;
     }
 }
 .hau-gift{
     --start-X:-1000px;
     --start-Y:-1000px;
+    --end-W: 100px;
+    --end-H: 100px;
     z-index: 1000;
     width: 20px;
     height: 20px;
@@ -42,6 +50,11 @@
     animation: move 1000ms forwards;
 }
 
+.hau-gift > img {
+    width: var(--end-W);
+    height: var(--end-H);
+    transition: all 300ms ease-in-out;
+}
 .hau-slider-holder{
     /*position: relative;*/
 }
