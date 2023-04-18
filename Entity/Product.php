@@ -1,6 +1,6 @@
 <?php
-    include_once '../util/dbconnect.php';
-    class Product extends DBConnect{
+
+    class Product{
         private $id;
         private $name;
         private $price;
@@ -8,9 +8,10 @@
         private $size;
         private $state;
         private $category;
+        private $categoryName;
         private $imgURL;
 
-        public function __construct( $id, $name, $price, $inventory, $size, $state, $category,$imgURL){
+        public function __construct( $id, $name, $price, $inventory, $size, $state, $category,$categoryName,$imgURL){
             $this -> id = $id;
             $this -> name = $name;
             $this -> price = $price;
@@ -18,6 +19,7 @@
             $this -> size = $size;
             $this -> state = $state;
             $this -> category = $category;
+            $this -> categoryName = $categoryName;
             $this -> imgURL = $imgURL;
         }
         public function getId(){
@@ -44,85 +46,12 @@
         public function getImgURL(){
             return $this -> imgURL;
         }
-    }
 
-    class Products extends DBConnect{
-        private $products;
-        public function getProducts(){
-            if($this->products==null){
-                $this -> products = array();
-                $rs = $this -> getConnection() -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId");
-                if($rs->num_rows>0){
-                    while($row = $rs->fetch_assoc()){
-                        array_push($this->products,
-                            new Product($row['ProductId'],$row['ProductName'],
-                                        $row['ProductPrice'],$row["ProductInventory"],
-                                        $row["ProductSize"],$row["ProductStatus"],
-                                        $row["CategoryId"], $row["ImageUrl"]));
-                    }
-                }
-            }
-            return $this -> products;
+        public function getCategoryName()
+        {
+            return $this->categoryName;
         }
 
-        public function getNewProducts(){
-           $products = array();
-                $rs = $this -> getConnection() -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId order by p.ProductId desc limit 10");
-                if($rs->num_rows>0){
-                    while($row = $rs->fetch_assoc()){
-                        array_push($products ,
-                            new Product($row['ProductId'],$row['ProductName'],
-                                        $row['ProductPrice'],$row["ProductInventory"],
-                                        $row["ProductSize"],$row["ProductStatus"],
-                                        $row["CategoryId"], $row["ImageUrl"]));
-                    }
-                }
-            return $products;
-        }
-        public function getByCategoryId($categoryId){
-            $products = array();
-                $rs = $this -> getConnection() -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId where p.CategoryId = $categoryId");
-                if($rs->num_rows>0){
-                    while($row = $rs->fetch_assoc()){
-                        array_push($products ,
-                            new Product($row['ProductId'],$row['ProductName'],
-                                        $row['ProductPrice'],$row["ProductInventory"],
-                                        $row["ProductSize"],$row["ProductStatus"],
-                                        $row["CategoryId"], $row["ImageUrl"]));
-                    }
-                }
-            return $products;
-        }
-        public function getAllProduct(){
-            $products = array();
-            $rs = $this -> getConnection()
-                        -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId");
-            if($rs->num_rows>0){
-                while($row = $rs->fetch_assoc()){
-                    array_push($products ,
-                        new Product($row['ProductId'],$row['ProductName'],
-                            $row['ProductPrice'],$row["ProductInventory"],
-                            $row["ProductSize"],$row["ProductStatus"],
-                            $row["CategoryId"], $row["ImageUrl"]));
-                }
-            }
-            return $products;
-        }
-        public function getProduct($page = 1,$productCount=5, $categories = "('Chó Bông')"){
-            $products = array();
-            $rs = $this -> getConnection()
-                -> query("SELECT * FROM Product p join Image i on p.ProductId = i.ProductId ");
-            if($rs->num_rows>0){
-                while($row = $rs->fetch_assoc()){
-                    array_push($products ,
-                        new Product($row['ProductId'],$row['ProductName'],
-                            $row['ProductPrice'],$row["ProductInventory"],
-                            $row["ProductSize"],$row["ProductStatus"],
-                            $row["CategoryId"], $row["ImageUrl"]));
-                }
-            }
-            return $products;
-        }
     }
 
 ?>
