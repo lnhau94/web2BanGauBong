@@ -44,7 +44,6 @@ function hideCate(){
 }
 
 function toCart(element){
-
     let target = document.getElementById("hau-gift");
     if(target) target.remove();
     let cart = document.getElementById("btnCart");
@@ -52,13 +51,20 @@ function toCart(element){
     let rect2 = element.getBoundingClientRect();
     let gift = document.createElement("div");
     cart.setAttribute("style","position: relative;")
-    gift.innerHTML = '<i class="fa-solid fa-gift"></i>'
+    // gift.innerHTML = '<i class="fa-solid fa-gift"></i>' + element.childNodes[1].outerHTML;
+    element.childNodes.forEach(e=>{
+        if(e.nodeName.toLowerCase() === 'img'){
+            gift.innerHTML = element.childNodes[1].outerHTML;
+        }
+
+    })
+
 
     gift.className = "hau-gift";
     gift.id = "hau-gift";
     gift.setAttribute("style",
-        "--start-X: " + (rect2.left - rect.left) + "px;" +
-                "--start-Y: " + (rect2.bottom - rect.bottom) + "px;" +
+        "--start-X: " + ((rect2.left + rect2.right)/2 - rect.left - 50) + "px;" +
+                "--start-Y: " + ((rect2.bottom + rect2.top)/2 - rect.bottom -50) + "px;" +
                 "position: absolute;"
     );
     cart.append(gift);

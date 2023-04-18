@@ -17,6 +17,9 @@
 </head>
 
 <body>
+    <?php session_start();
+//        $_SESSION["user"] = "a";
+    ?>
     <?php include 'Templates/Header.php';?>
     <?php include 'Templates/TopMenu.php';?>
     <?php include 'Templates/Container.php';?>
