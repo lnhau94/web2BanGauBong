@@ -1,0 +1,399 @@
+*{
+    font-family: 'Inter';
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+/* Navibar */
+.Nav_Bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+    background-color: #fdbdcd;
+    transition: all 0.25s ease;
+}
+.Nav_Bar:hover {
+    width: 200px;
+}
+
+.Nav_Bar .link_name{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.Nav_Bar:hover .link_name{
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+.Nav_Bar ul li a{
+    color: #950b2d;
+    display: flex;
+    background-color:  #fdbdcd;
+    align-items: center;
+    text-decoration: none;
+    padding: 4px 10px;
+}
+
+.Nav_Bar ul li a:hover{
+    background-color: #ffffff;
+    color: #ff2289;
+    transition-duration: 0.25s;
+}
+
+.Nav_Bar ul li a i{
+    height: 50px;
+    min-width: 30px;
+    line-height: 50px;
+    margin-left: 5px;
+}
+/* Logo web */
+.Nav_Bar #logo{
+    width: 50px;
+    transition-duration: 0.3s;
+}
+
+.Nav_Bar:hover #logo{
+    width: 100px;
+    margin-left: 45px;
+}
+
+/* Content */
+.Home-Content{
+    position: absolute;
+    height: 100px;
+    width: calc(100% - 50px);
+    left: 50px;
+    transition-duration: 0.25s;
+}
+
+.Nav_Bar:hover ~ .Home-Content{
+    position: absolute;
+    height: 100px;
+    width: calc(100% - 200px);
+    left: 200px;
+    transition-duration: 0.25s;
+}
+
+/* Account site */
+.Account-Site{
+    display: grid;
+    grid-template-rows: 50px 50px calc(100vh - 150px) 50px;
+    
+}
+
+/* nút thu nhỏ */
+.btn-add-user{
+    float: right;
+    padding: 5px 10px;
+    font-size: 16px;
+    background: #ff2289;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fde2e9;
+    transition-duration: 0.3s;
+}
+
+.btn-add-user:hover {
+    background-color: #ffa7bd;
+    transition-duration: 0.3s;
+}
+
+/* ô tìm kiếm */
+    
+.txt-search{
+    float: right;
+    padding: 5px 10px;
+    width: 250px;
+    font-size: 12px; 
+    color: #ff2289;
+    border-radius: 5px;
+    border: 1px solid #ff2289;
+}
+
+::placeholder { 
+    color: #ff6fb2;
+}
+
+.btn-search {
+    background-color: transparent;
+    margin-right: 20px;
+    margin-left: 10px;
+    float: right;
+    color:#ff2289;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.btn-search:hover {
+    color: #950b2d;
+    transition-duration: 0.3s;
+}
+/* Bảng dữ liệu */
+
+.heading-table{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    margin: 10px 10px 0px 10px;
+    background-color: #ff56a5;
+    color:#ffeef2;
+}
+
+.heading-name, .row-data .items-data, .row-data .items-control{
+    padding: 10px;
+}
+
+.data-table-list{
+    background-color: #ffffff;
+    margin: 0px 10px 10px 10px;
+    height: 90%;
+    overflow: auto;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.row-data{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    background-color: #ffd6e9;
+    color:#7b0042;
+    transition-duration: 0.2s;
+}
+
+.sup-data{
+    background-color: #fff0f9;
+    transition-duration: 0.2s;
+    height:0px;
+    grid-area: 2 / 1 /  2 /  4;
+}
+
+.row-data:hover{
+    background-color:#ff97c7;
+    transition-duration: 0.2s;
+}
+
+.row-data:hover > .sup-data{
+    height: 100px;
+}
+
+
+.row-data:hover > .sup-data .detail-data{
+    opacity: 2;
+    transition-duration: 0.s;
+}
+
+.sup-data .detail-data{
+    margin-left: 20px;
+    opacity: 0;
+    transition-duration: 0.2s;
+}
+
+.btn-Edit-User, .btn-Delete-User {
+    color: #7b0042;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+    transition-duration: 0.3s;
+}
+
+.btn-Edit-User:hover , .btn-Delete-User:hover {
+    color: #af5886;
+    transition-duration: 0.3s;
+}
+
+/* thu nhỏ */
+@media only screen and (max-height: 500px) {
+    body {
+        height: 500px;
+    }
+    
+    .Account-Site{
+        display: grid;
+        grid-template-rows: 50px 50px 350px 50px;
+    }
+}
+
+.warning-information {
+    font-size: 10px; 
+    color: red; 
+    margin-left: 5px; 
+    margin-bottom: 5px; 
+}
+
+.form-site-background{
+    display: none;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    opacity: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+}
+
+.close-button{
+    margin-left: 50px;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color:#950b2d;
+    transition-duration: 0.3s;
+}
+
+.close-button:hover {
+    color:#ff7e9a;
+    transition-duration: 0.3s;
+}
+
+.input-form {
+    position: relative;
+    top: 20px;
+    margin: auto auto 10% auto; 
+    width: 400px; 
+    border-radius: 20px;
+    background-color:#ffc6d2;
+}
+
+.input-form .input-header {
+    display: flex; 
+    justify-content: center; 
+    padding: 15px 20px;
+}
+
+.input-form .input-container {
+    background-color:rgb(255, 255, 255);
+}
+
+.input-form .input-container .row-detail{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.row-detail .txt-input-detail, .cmb-input-detail{
+    border-radius: 5px;
+    border: 1px solid #ff0080;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.row-detail .lab-input-detail{
+    font-size: 18px;
+    color:#bd2671;
+    font-weight: bold;
+}
+
+.lab-rad{
+    font-size: 16px;
+    color:#ff198c;
+}
+
+.input-form .input-bottom{
+    display: flex;
+    justify-content: center;
+}
+
+
+.btn-submit{
+    padding: 5px 10px;
+    width: 200px;
+    margin: 10px;
+    border: none;
+    background-color: #ff4375;
+    color:#fff7f9;
+    border-radius: 7px;
+    transition-duration: 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-submit:hover{
+    background-color: #ff82a3;
+    transition-duration: 0.3s;
+}
+
+/* animation */
+.input-form{
+    animation: animatezoom 0.6s
+}
+
+/* hiệu ứng hiện form đăng nhập */
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+/* Form xác nhận thay đổi thông tin */
+.main-form {
+    position: relative; 
+    background-color: rgb(255, 249, 251);
+    width: 375px;
+    top: 20px;
+    margin: auto auto 10% auto; 
+    border-radius: 10px;
+}
+
+.header-content{
+    padding: 14px 40px; 
+    text-align: center;
+    background-color: #ffc3df;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.header-content .title{
+    font-size: 16px; 
+    font-weight:bold; 
+    color :rgb(99, 0, 16);
+}
+
+.center-content{
+    padding: 5px 20px; 
+    text-align: center;
+}
+
+.icon{
+    font-size: 72px; 
+    color:rgb(99, 0, 16);
+}
+
+.footer-content {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.footer-content .attention-button{
+    padding: 10px 20px;
+    width: 100px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color:  #ff2289;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.footer-content .attention-button:hover{
+    background-color:  #ffb4d7;
+    transition-duration: 0.3s;
+}
+
+.main-form {
+    animation: animatezoom 0.6s
+}
