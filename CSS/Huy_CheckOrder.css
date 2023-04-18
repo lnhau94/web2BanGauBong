@@ -1,0 +1,141 @@
+.huy-container-orders {
+  display: block;
+}
+
+.huy-datepicker-before {
+  border-color: #FF7B9B;
+  border-radius: 10px;
+}
+
+.huy-datepicker-after {
+  border-color: #FF7B9B;
+  border-radius: 10px;
+}
+
+.huy-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.huy-header {
+  background-color: #FF7B9B;
+}
+
+.huy-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.huy-row:last-child {
+  border-bottom: none;
+}
+
+.huy-column {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.huy-column:last-child {
+  text-align: right;
+}
+
+.huy-column-title {
+  font-weight: bold;
+}
+
+.huy-body {
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.huy-body > .huy-row:nth-child(odd) {
+  background-color: #f8f8f8;
+  animation: huy-slide-left 2s;
+}
+
+@keyframes huy-slide-left {
+  from { 
+    margin-left: -100%; 
+  }
+  to { 
+    margin-left: 0%; 
+  }
+}
+
+.huy-body > .huy-row:nth-child(even) {
+  background-color: #FFF4F9;
+  animation: huy-slide-right 2s;
+}
+
+@keyframes huy-slide-right {
+  from {
+    margin-right: -100%;
+  }
+  to {
+    margin-right: 0%;
+  }
+}
+
+.huy-footer {
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.huy-status:has(option[value="none"]:checked) {
+  background-color: #e74c3c;
+}
+
+.huy-status:has(option[value="process"]:checked) {
+  background-color: #f1c40f;
+}
+
+.huy-status:has(option[value="done"]:checked) {
+  background-color: #2ecc71;
+}
+
+.huy-status {
+  color: white;
+  height: 25px;
+  border-radius: 10px;
+  border-color: transparent;
+}
+
+#none {
+  background-color: #e74c3c;
+}
+
+#process {
+  background-color: #f1c40f;
+}
+
+#done {
+  background-color: #2ecc71;
+}
+
+@media (max-width: 630px) {
+  .huy-body {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .huy-column {
+    height: 25px;
+  }
+  .huy-table {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+  .huy-row {
+    display: block;
+    height: 100%;
+  }
+  .huy-column:last-child {
+    text-align: center;
+  }
+}
