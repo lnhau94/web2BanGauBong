@@ -41,41 +41,53 @@ $row = mysqli_fetch_assoc($result);
             <input type="hidden" name="sid" value="<?php echo $ProductId; ?>" id="">
             <div class="form-group">
                 <label for="ProductName">Tên sản phẩm</label>
-                <input type="text" id="ProductName" name="ProductName" class="form-control"
-                value="<?php echo $row['ProductName']?>">
+                <input type="text" id="ProductName" name="ProductName" class="form-control" value="<?php echo $row['ProductName'] ?>">
             </div>
             <div class="form-group">
                 <label for="fileToUpload">Hình ảnh</label>
-                <input type="file" name="fileToUpload" id="fileToUpload" class="form-control"
-                value="<?php echo $row['fileToUpload']?>">
+                <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" value="<?php echo $row['fileToUpload'] ?>">
             </div>
             <div class="form-group">
                 <label for="ProductPrice">Giá</label>
-                <input type="text" id="ProductPrice" name="ProductPrice" class="form-control"
-                value="<?php echo $row['ProductPrice']?>">
+                <input type="text" id="ProductPrice" name="ProductPrice" class="form-control" value="<?php echo $row['ProductPrice'] ?>">
             </div>
             <div class="form-group">
                 <label for="ProductInventory">Kho hàng</label>
-                <input type="text" id="ProductInventory" name="ProductInventory" class="form-control"
-                value="<?php echo $row['ProductInventory']?>">
+                <input type="text" id="ProductInventory" name="ProductInventory" class="form-control" value="<?php echo $row['ProductInventory'] ?>">
             </div>
             <div class="form-group">
                 <label for="ProductSize">Kích thước</label>
-                <input type="text" id="ProductSize" name="ProductSize" class="form-control"
-                value="<?php echo $row['ProductSize']?>">
+                <input type="text" id="ProductSize" name="ProductSize" class="form-control" value="<?php echo $row['ProductSize'] ?>">
             </div>
             <div class="form-group">
                 <label for="ProductStatus">Trạng thái</label></br>
-                <select id="ProductStatus" name="ProductStatus" class="form-control"
-                value="<?php echo $row['ProductStatus']?>">
+                <select id="ProductStatus" name="ProductStatus" class="form-control" value="<?php echo $row['ProductStatus'] ?>">
                     <option value="Đang bán">Đang bán</option>
                     <option value="Ngừng kinh doanh">Ngừng kinh doanh</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="CategoryName">Loại</label>
-                <input type="text" id="CategoryName" name="CategoryName" class="form-control"
-                value="<?php echo $row['CategoryName']?>">
+                <!-- <input type="text" id="CategoryName" name="CategoryName" class="form-control"> -->
+                <?php
+                require_once 'ketnoi.php';
+                if ($loai_sql = $conn->query("SELECT * FROM category")) {
+                    $i = 0;
+                    $string = '';
+                    $string = $string . "<select name='CategoryId'>";
+                    while ($i++ < $loai_sql->num_rows) {
+                        $row = $loai_sql->fetch_array();
+                        $string = $string . "<option value=";
+                        $string = $string . $row[0];
+                        $string = $string . ">";
+                        $string = $string . $row[1];
+                        $string = $string . "</option>";
+                    }
+                    $string = $string . "</select>";
+                    echo $string;
+                    // $loai_sql->free_result();
+                }
+                ?>
             </div>
             <button name="submit" class="btn btn-success">Cập nhật</button>
         </form>

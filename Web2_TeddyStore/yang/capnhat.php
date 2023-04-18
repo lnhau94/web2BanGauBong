@@ -54,7 +54,26 @@
             </div>
             <div class="form-group">
                 <label for="CategoryName">Loại</label>
-                <input type="text" id="CategoryName" name="CategoryName" class="form-control">
+                <!-- <input type="text" id="CategoryName" name="CategoryName" class="form-control"> -->
+                <?php
+                require_once 'ketnoi.php';
+                if ($loai_sql = $conn->query("SELECT * FROM category")) {
+                    $i = 0;
+                    $string = '';
+                    $string = $string . "<select name='CategoryId'>";
+                    while ($i++ < $loai_sql->num_rows) {
+                        $row = $loai_sql->fetch_array();
+                        $string = $string . "<option value=";
+                        $string = $string . $row[0];
+                        $string = $string . ">";
+                        $string = $string . $row[1];
+                        $string = $string . "</option>";
+                    }
+                    $string = $string . "</select>";
+                    echo $string;
+                    // $loai_sql->free_result();
+                }
+                ?>
             </div>
             <button name="submit" class="btn btn-success">Thêm</button>
         </form>
@@ -66,29 +85,22 @@
 <?php
 // Nhận dữ liệu từ form
 $ProductName = $_POST['ProductName'];
-$fileToUpload = $_POST['fileToUpload'];
+// $fileToUpload = $_POST['fileToUpload'];
 $ProductPrice = $_POST['ProductPrice'];
 $ProductInventory = $_POST['ProductInventory'];
 $ProductSize = $_POST['ProductSize'];
 $ProductStatus = $_POST['ProductStatus'];
-$CategoryName = $_POST['CategoryName'];
+$CategoryId = $_POST['CategoryId'];
 $ProductId = $_POST['sid'];
 
 // Kết nối CSDL
 require_once 'ketnoi.php';
 
-// Lấy mã loại
-$maloai_sql = "SELECT * FROM category";
-$maloai_result = mysqli_query($conn, $maloai_sql);
-$row_maloai = mysqli_fetch_array($maloai_result);
-while ($r = mysqli_fetch_assoc($maloai_result)) {
-    if ($CategoryName == $row_maloai['CategoryName']) {
-        $CategoryId = $row_maloai['CategoryId'];
-    }
-}
 
 // Viết lệnh sql để thêm dữ liệu
-$capnhat_sql = "UPDATE product SET ProductName='$ProductName', ProductPrice='$ProductPrice', ProductInventory='$ProductInventory', ProductSize='$ProductSize', ProductStatus='$ProductStatus'
+$lietke_sql = "SELECT * FROM product p join image i on p.ProductId = i.ProductId join category c on p.CategoryId = c.CategoryId";
+
+$capnhat_sql = "UPDATE product SET ProductName='$ProductName', ProductPrice='$ProductPrice', ProductInventory='$ProductInventory', ProductSize='$ProductSize', ProductStatus='$ProductStatus', CategoryId='$CategoryId'
 WHERE ProductId='$ProductId'";
 // echo $capnhat_sql; exit;
 
