@@ -59,6 +59,29 @@ function showNewProduct(){
     echo '</div>';
 }
 
+function showProductDetail($id){
+    $ps = new Products();
+    $cateId = "";
+
+//    echo '<label class="hau-container-label">New Arrival</label>';
+    foreach ($ps->getAllProduct() as $item) {
+        if($item->getId() == $id) {
+            $s = new ProductView($item);
+            echo $s->showInProductPage();
+            $cateId = $item->getCategory();
+            break;
+        }
+    }
+
+    echo '<label class="hau-container-label">Cùng thể loại</label>';
+    echo '<div class="hau-product-container">';
+    foreach ($ps->getByCategoryId($cateId) as $item) {
+        $s = new ProductView($item);
+        echo $s->showInCatalog();
+    }
+    echo '</div>';
+}
+
 ?>
 
 
