@@ -123,12 +123,12 @@
                 while ($rows_orderdetails = $rs_orderdetails -> fetch_assoc()){
                   if ($this -> products == null) {
                     $this -> products = array();
-                    $rs_products = $connect -> query("select p.*, i.ImageUrl from product p inner join image i on i.ProductId = p.ProductId where p.ProductId = ".$rows_orderdetails['ProductId']);
+                    $rs_products = $connect -> query("select distinct p.*, c.CategoryName, i.ImageUrl from product p inner join image i on i.ProductId = p.ProductId inner join category c on c.CategoryId = p.CategoryId where p.ProductId = ".$rows_orderdetails['ProductId']);
                     if ($rs_products -> num_rows > 0) {
                       while ($rows_products = $rs_products -> fetch_assoc()) {
                         array_push($this -> products, new Product($rows_products['ProductId'],$rows_products['ProductName'],
                                                                   $rows_products['ProductPrice'],$rows_products['ProductInventory'],$rows_products['ProductSize'],
-                                                                  $rows_products['ProductStatus'],$rows_products['CategoryId'],$rows_products['ImageUrl']));
+                                                                  $rows_products['ProductStatus'],$rows_products['CategoryId'],$rows_products['CategoryName'],$rows_products['ImageUrl']));
                       }
                     }
                   }
@@ -194,7 +194,6 @@
       echo '</div>'; // Close div of "huy-container-orders"
       echo '</body>';
       echo '<script src="../JS/Huy_CheckOrder.js"></script>';
-      print_r($this -> orders);
     }
   }
   $test = new Orders();

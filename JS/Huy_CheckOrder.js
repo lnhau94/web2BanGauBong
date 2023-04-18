@@ -12,6 +12,24 @@ document.querySelectorAll(".huy-status").forEach((e) => {
       ev.target.style.filter = 'blur(1px)';
     }
     var reqhttp = new XMLHttpRequest();
-
+    var nameStatus = "";
+    if (ev.target.value == "none") {
+      nameStatus = "Từ chối";
+    }
+    else if (ev.target.value == "done") {
+      nameStatus = "Đã thanh toán";
+    }
+    else if (ev.target.value == "process") {
+      nameStatus = "Đang chờ xử lý";
+    }
+    reqhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+      }
+    }
+    reqhttp.open("POST",'../api/status_order.php?' + 
+    "id=" + e.parentElement.parentElement.childNodes[1].innerText +
+    "&status=" + nameStatus,true);
+    reqhttp.send();
   });
 });
