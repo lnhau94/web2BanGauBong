@@ -11,7 +11,7 @@
 
         <div class="CenterLog">
             <label class="labLog" for="txtUsername"><b>Tên người dùng</b></label><br>
-            <input class="txtLog" type="text" placeholder="Nhập tên người dùng!" name="txtUsername" required><br>
+            <input class="txtLog" id="txtUsername" type="text" placeholder="Nhập tên người dùng!" name="txtUsername" required><br>
         
             <label class="labLog" for="txtPassword"><b>Mật khẩu</b></label><br>
             <div style="position: relative;"> 
@@ -23,7 +23,7 @@
                 </label>
             </div>
 
-            <button class="btnSubmit" type="submit">ĐĂNG NHẬP</button>
+            <button class="btnSubmit" onclick="login()">ĐĂNG NHẬP</button>
         </div>  
 
         <div class="BotFrm">
@@ -32,3 +32,6 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>

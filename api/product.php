@@ -4,12 +4,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $url = parse_url($_SERVER['REQUEST_URI']);
     $param = explode('&',$url['query']);
-    $page = explode("=",$param[0])[1];
-    $productCount = explode("=",$param[1])[1];
-    $categories = explode("=",$param[2])[1];
-    $name = urldecode(explode("=",$param[3])[1]);
-    $minPrice = explode("=",$param[4])[1];
-    $maxPrice = explode("=",$param[5])[1];
+//    $page = explode("=",$param[0])[1];
+////    $productCount = explode("=",$param[1])[1];
+//    $categories = explode("=",$param[2])[1];
+//    $name = urldecode(explode("=",$param[3])[1]);
+//    $minPrice = explode("=",$param[4])[1];
+//    $maxPrice = explode("=",$param[5])[1];
+    $page = $_REQUEST['page'];
+    $productCount = $_REQUEST['productCount'];
+    $minPrice = $_REQUEST['minPrice'];
+    $categories = $_REQUEST['categories'];
+    $name = $_REQUEST['name'];
+    $maxPrice = $_REQUEST['maxPrice'];
     if (empty($page)) {
         $page = 1;
     }
