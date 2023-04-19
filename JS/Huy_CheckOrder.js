@@ -56,8 +56,11 @@ document.querySelector(".huy-btn-search-order").addEventListener("click", (e) =>
 });
 
 function changeDetail(element) {
+  element.parentElement.parentElement.classList.toggle("is-active");
+  element.parentElement.parentElement.querySelector(".huy-detail-order").classList.toggle("is-display");
   if (element.childNodes[0].className == "fa-solid fa-angle-down") {
     element.childNodes[0].className = "fa-solid fa-angle-up";
+    element.parentElement.parentElement.style.height = null;
   }
   else {
     element.childNodes[0].className = "fa-solid fa-angle-down";

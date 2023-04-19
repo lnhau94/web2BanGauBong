@@ -90,23 +90,13 @@
           }
           elseif ($rs_orders -> num_rows > 0){
             while ($rows_orders = $rs_orders -> fetch_assoc()){
-              $rs_orderdetails = $connect -> query("select * from orderdetail where OrdersId = ".$rows_orders['OrdersId']);
+              $rs_orderdetails = $connect -> query('select distinct o.*,p.ProductName,p.ProductPrice,p.ProductSize from orderdetail o inner join product p on p.ProductId = o.ProductId where o.OrdersId = '.$rows_orders['OrdersId']);
               if ($this -> orderdetails == null){
                 $this -> orderdetails = array();
                 if ($rs_orderdetails -> num_rows > 0){
                   while ($rows_orderdetails = $rs_orderdetails -> fetch_assoc()){
-                    if ($this -> products == null) {
-                      $this -> products = array();
-                      $rs_products = $connect -> query("select distinct p.*, c.CategoryName, i.ImageUrl from product p inner join image i on i.ProductId = p.ProductId inner join category c on c.CategoryId = p.CategoryId where p.ProductId = ".$rows_orderdetails['ProductId']);
-                      if ($rs_products -> num_rows > 0) {
-                        while ($rows_products = $rs_products -> fetch_assoc()) {
-                          array_push($this -> products, new Product($rows_products['ProductId'],$rows_products['ProductName'],
-                                                                    $rows_products['ProductPrice'],$rows_products['ProductInventory'],$rows_products['ProductSize'],
-                                                                    $rows_products['ProductStatus'],$rows_products['CategoryId'],$rows_products['CategoryName'],$rows_products['ImageUrl']));
-                        }
-                      }
-                    }
-                    array_push($this -> orderdetails, new OrderDetail($rows_orderdetails['OrdersId'],$this -> products,$rows_orderdetails['OrderQuantity']));
+                    array_push($this -> orderdetails, new OrderDetail($rows_orderdetails['OrdersId'],$rows_orderdetails['ProductId'],$rows_orderdetails['ProductName'],
+                                                                      $rows_orderdetails['ProductPrice'],$rows_orderdetails['ProductSize'],$rows_orderdetails['OrderQuantity']));
                   }
                   array_push($this -> orders, new Order($rows_orders['OrdersId'],$rows_orders['TotalPrice'],
                                                         $rows_orders['OrdersDate'], $rows_orders['UsersId'], $rows_orders['Status'],$this -> orderdetails));
@@ -156,10 +146,32 @@
               }
               echo '
               <div class="huy-column">
-                <button class="huy-btn-detail" onclick="changeDetail(this)"><i id="huy-icon-show" class="fa-solid fa-angle-down"></i></button>
+                <button class="huy-btn-detail" onclick="changeDetail(this)"><i id="huy-icon-show" class="fa-solid fa-angle-up"></i></button>
               </div>
               ';
-              echo '</div>'; // Close div of ""huy-row"
+              echo '<div class="huy-detail-order">';
+              echo '<div class="huy-detail-product">';
+              // echo '<label>Tên sản phẩm</label>';
+              echo '<label>Kích cỡ</label>';
+              echo '<label>Số lượng</label>';
+              echo '<label>Đơn giá</label>';
+              echo '<label>Tổng tiền</label>';
+              echo '</div>'; // Close div of "huy-detail-product"
+              foreach ($item -> getOrderDetail() as $detailOrder) {
+                echo '<div class="huy-detail-product">';
+                echo '<label>'.$detailOrder -> getProductName().'</label><br>';
+                echo '<label>'.$detailOrder -> getProductSize().'</label>';
+                echo '<label>'.$detailOrder -> getOrderQty().'</label>';
+                echo '<label>'.$detailOrder -> getProductPrice().'</label>';
+                echo '<label>'.$detailOrder -> getProductPrice() * $detailOrder -> getOrderQty().'</label>';
+                echo '</div>'; // Close div of "huy-detail-product"
+              }
+              // echo '<div class="huy-detail-product">';
+              // echo '<label>Test item 1</label>';
+              // echo '<label>Test item 2</label>';
+              // echo '</div>'; // Close div of "huy-detail-product"
+              echo '</div>'; // Close div of "huy-detail-order"
+              echo '</div>'; // Close div of "huy-row"
             }
           }
         }
