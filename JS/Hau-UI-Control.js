@@ -123,3 +123,46 @@ function toCart(element){
     // gift.remove();
 
 }
+
+function showCart(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".container").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST",
+        "/api/cart.php?" +
+        "userId=" + sessionStorage.getItem("userid"),
+        true);
+    xmlhttp.send();
+}
+
+function checkout(){
+    document.querySelectorAll(".hau-cart-item").forEach(item=>{
+        if(item.querySelector(".hau-cart-item-checkbox").checked){
+            console.log(item.dataset.id);
+            console.log(item.querySelector(".hau-cart-item-totalPrice"));
+            console.log(Number(item.querySelector(".hau-cart-item-qty").value)
+                *Number(item.querySelector(".hau-cart-item-price").value)
+            );
+            console.log(Number(item.querySelector(".hau-cart-item-totalPrice").innerText.replaceAll(",","")));
+
+        }
+    })
+}
+
+function calculateTotalPrice(element){
+    if(element.value < 1){
+        element.value = 1;
+    }
+    if(element.value > 100){
+        element.value = 100;
+    }
+    let item = element.parentElement;
+    item.querySelector(".hau-cart-item-totalPrice").innerText =
+        new Intl.NumberFormat().format(
+            Number(item.querySelector(".hau-cart-item-price").innerText.replaceAll(",",""))*
+            item.querySelector(".hau-cart-item-qty").value);
+
+}

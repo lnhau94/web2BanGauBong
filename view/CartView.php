@@ -6,23 +6,27 @@
             $this->cart = $cart;
         }
         public function show(){
-            $view = '';
+            $view = '<div class="hau-cart-holder">';
+            $view = $view.'<div class="hau-cart-header">
+                            <label class="hau-control-label">Giỏ hàng</label>
+                            <button onclick="checkout()" class="hau-cart-button">Thanh Toán</button>
+                            </div>';
             foreach ($this->cart->getItemList() as $item){
                 $view = $view. '
-                    <div class="hau-cart-item">
-                        <img class="hau-cart-item-img" src="img/'.$item->getImgUrl().'">
+                    <div class="hau-cart-item" data-id="'.$item->getId().'">
+                        <img width="50px" height="50px" class="hau-cart-item-img" src="img/'.$item->getImgUrl().'">
                         <label class="hau-cart-item-name">'.$item->getName().'</label>
-                        <label class="hau-cart-item-price">'.$item->getPrice().'</label>
-                        <input class="hau-cart-item-qty" type="number" min="1" max="100" value ="'.$item->getQty().'">
-                        <label class="hau-cart-item-totalPrice">'.intval($item->getPrice())*intval($item->getQty()).'</label>
-                        <div>
+                        <label class="hau-cart-item-price">'.number_format($item->getPrice()).'</label>
+                        <input onchange="calculateTotalPrice(this)" class="hau-cart-item-qty" type="number" min="1" max="100" value ="'.$item->getQty().'">
+                        <label class="hau-cart-item-totalPrice">'.number_format(intval($item->getPrice())*intval($item->getQty())).'</label>
+                        <div class="hau-cart-item-function-holder">
                             <input class="hau-cart-item-checkbox" type="checkbox">
-                            <button class="hau-cart-item-remove"></button>
+                            <button class="hau-cart-item-remove"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
                 ';
             }
-            return $view;
+            return $view."</div>";
         }
     }
 ?>

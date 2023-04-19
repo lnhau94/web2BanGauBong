@@ -16,11 +16,11 @@
     <!-- Đăng nhập và giỏ hàng-->
     <div class="login-function">
         <button id="btnLogin" onclick="OpenLogin()">
-            <i class="fa-solid fa-right-to-bracket"></i>
+            <i class="fa-solid fa-user"></i>
         </button>
 
-        <button id="btnCart">
+        <button id="btnCart" onclick="showCart()">
             <i class="fa-solid fa-cart-shopping"></i>
         </button>
-    </div>      
+    </div>
 </div>
