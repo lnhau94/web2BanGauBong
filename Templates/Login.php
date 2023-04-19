@@ -11,7 +11,7 @@
 
         <div class="CenterLog">
             <label class="labLog" for="txtUsername"><b>Tên người dùng</b></label><br>
-            <input class="txtLog" type="text" placeholder="Nhập tên người dùng!" name="txtUsername" required><br>
+            <input class="txtLog" id="txtUsername" type="text" placeholder="Nhập tên người dùng!" name="txtUsername" required><br>
         
             <label class="labLog" for="txtPassword"><b>Mật khẩu</b></label><br>
             <div style="position: relative;"> 
@@ -23,7 +23,7 @@
                 </label>
             </div>
 
-            <button class="btnSubmit" type="submit">ĐĂNG NHẬP</button>
+            <button class="btnSubmit" onclick="login()">ĐĂNG NHẬP</button>
         </div>  
 
         <div class="BotFrm">
@@ -32,3 +32,24 @@
         </div>
     </div>
 </div>
+<script>
+    function login(){
+        let username = document.getElementById("txtUsername").value;
+        let pass = document.getElementById("txtPassword").value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                sessionStorage.setItem("userid",this.responseText);
+                alert(sessionStorage.getItem("userid"));
+            }
+        };
+        xmlhttp.open("POST",
+            "/api/login.php?" +
+            "username=" + username +
+            "&pass=" + pass ,
+            true);
+        xmlhttp.send();
+        // alert(username.value);
+        // alert(pass.value);
+    }
+</script>

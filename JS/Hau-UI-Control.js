@@ -43,6 +43,30 @@ function hideCate(){
     }
 }
 
+function addToCart(element){
+    toCart(element);
+    let qtyElement
+        = element.querySelector(".hau-product-item-detail-qty");
+    if(qtyElement.value > 100 || qtyElement.value < 1){
+        qtyElement.value = 1;
+    }
+    let id = element.dataset.id;
+    let qty = qtyElement.value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("Add Success!");
+        }
+    };
+    xmlhttp.open("POST",
+        "/api/addtocart.php?" +
+        "userId=" + sessionStorage.getItem("userid") +
+        "&productId=" + id +
+        "&qty=" + qty,
+        true);
+    xmlhttp.send();
+}
+
 function toCart(element){
     let target = document.getElementById("hau-gift");
     if(target) target.remove();

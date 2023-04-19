@@ -28,7 +28,7 @@
         }
         public function showInProductPage(){
             return "
-                <div ' class='hau-product-item-detail' style='--start-X: ".rand(-100,100)."%;'>
+                <div  class='hau-product-item-detail' style='--start-X: ".rand(-100,100)."%;' data-id=".$this->product->getId().">
                     <img class='hau-product-item-detail-img' src='img/". $this->product->getImgURL() . "'style = {width: 300px; height: 350px;}>
                     <div class='hau-product-item-detail-info'>
                         <label class='hau-product-item-name'>
@@ -38,7 +38,7 @@
                         <label class='hau-product-item-detail-name'>".$this->product->getCategoryName()."</label>
                         <label class='hau-product-item-detail-name'>".$this->product->getSize()."</label>
                         <input class='hau-product-item-detail-qty' type='number' min='1' max='100' value='1'>
-                        <button onclick='toCart(this.parentElement.parentElement)' class='hau-product-item-button'>Thêm vào giỏ hàng</button>
+                        <button onclick='addToCart(this.parentElement.parentElement)' class='hau-product-item-button'>Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             ";
