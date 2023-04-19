@@ -52,6 +52,12 @@
   overflow-y: auto;
 }
 
+#huy-text-no-item {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
 .huy-body > .huy-row:nth-child(odd) {
   background-color: #f8f8f8;
   animation: huy-slide-left 2s;
@@ -138,4 +144,9 @@
   .huy-column:last-child {
     text-align: center;
   }
+  /* #huy-text-no-item {
+    position: absolute;
+    top: 21%;
+  } */
+  
 }
