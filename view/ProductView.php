@@ -9,7 +9,7 @@
 
         public function showInCatalog(){
             return "
-                <div  class='hau-product-item' style='--start-X: ".rand(-100,100)."%;'>
+                <div  class='hau-product-item' style='--start-X: ".rand(-100,100)."%;' data-id=".$this->product->getId()." >
                     <img class='hau-product-item-img' src='img/". $this->product->getImgURL() . "'style = {width: 300px; height: 350px;}>
                     <label class='hau-product-item-name'><a href='/product=".$this->product->getId()."'>".$this->product->getName()."</a></label>
                     <label class='hau-product-item-name'>".$this->product->getCategoryName()."</label>
@@ -23,7 +23,7 @@
 //            if($_SESSION["user"] != null){
 //                }
 //            return "";
-            return '<button onclick="toCart(this.parentElement)" class="hau-product-item-button">Thêm vào giỏ hàng</button>';
+            return '<button onclick="addToCartDefault(this.parentElement)" class="hau-product-item-button">Thêm vào giỏ hàng</button>';
 
         }
         public function showInProductPage(){

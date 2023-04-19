@@ -33,23 +33,5 @@
     </div>
 </div>
 <script>
-    function login(){
-        let username = document.getElementById("txtUsername").value;
-        let pass = document.getElementById("txtPassword").value;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                sessionStorage.setItem("userid",this.responseText);
-                alert(sessionStorage.getItem("userid"));
-            }
-        };
-        xmlhttp.open("POST",
-            "/api/login.php?" +
-            "username=" + username +
-            "&pass=" + pass ,
-            true);
-        xmlhttp.send();
-        // alert(username.value);
-        // alert(pass.value);
-    }
+
 </script>
