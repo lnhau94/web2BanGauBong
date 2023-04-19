@@ -21,5 +21,5 @@ function ajax(page=1) {
                 "&maxPrice=" + maxPrice,
         true);
     xmlhttp.send();
-
 }
+

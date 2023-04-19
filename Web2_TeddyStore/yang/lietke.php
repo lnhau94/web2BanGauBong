@@ -46,7 +46,7 @@
                 require_once 'ketnoi.php';
 
                 // Câu lệnh
-                $lietke_sql = "SELECT * FROM product";
+                $lietke_sql = "SELECT * FROM product p join image i on p.ProductId = i.ProductId join category c on p.CategoryId = c.CategoryId";
 
                 // Thực thi câu lệnh
                 $lietke_result = mysqli_query($conn, $lietke_sql);
@@ -70,15 +70,14 @@
                     <!-- echo $r['ProductName'] . " - " . $r['ProductPrice'] . " - " . $r['ProductInventory'] . " - " . $r['ProductSize'] . " - " . $r['ProductStatus'] . " - " . $r['CategoryId']; -->
                     <tr>
                         <td><?php echo $r['ProductName']; ?></td>
-                        <td><?php echo $r['fileToUpload']; ?></td>
+                        <td><?php echo "<img style='width:100px;height:100px;' src='img/" . $r['ImageUrl'] . "'"; ?></td>
                         <td><?php echo $r['ProductPrice']; ?></td>
                         <td><?php echo $r['ProductInventory']; ?></td>
                         <td><?php echo $r['ProductSize']; ?></td>
                         <td><?php echo $r['ProductStatus']; ?></td>
-                        <td><?php echo $r['CategoryId']; ?></td>
+                        <td><?php echo $r['CategoryName']; ?></td>
                         <td>
                             <a href="sua.php?sid=<?php echo $r['ProductId']; ?>" class="btn btn-info">Sửa</a>
-                            <a onclick="return confirm('Bạn có muốn xóa sản phẩm?');" href="xoa.php?sid=<?php echo $r['ProductId']; ?>" class="btn btn-danger">Xóa</a>
                         </td>
                     </tr>
                 <?php
@@ -112,11 +111,11 @@
                         </div>
                         <div class="form-group">
                             <label for="ProductPrice">Giá</label>
-                            <input type="text" id="ProductPrice" name="ProductPrice" class="form-control">
+                            <input type="number" min="0" id="ProductPrice" name="ProductPrice" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="ProductInventory">Kho hàng</label>
-                            <input type="text" id="ProductInventory" name="ProductInventory" class="form-control">
+                            <input type="number" min="0" id="ProductInventory" name="ProductInventory" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="ProductSize">Kích thước</label>
@@ -131,7 +130,26 @@
                         </div>
                         <div class="form-group">
                             <label for="CategoryName">Loại</label>
-                            <input type="text" id="CategoryName" name="CategoryName" class="form-control">
+                            <!-- <input type="text" id="CategoryName" name="CategoryName" class="form-control"> -->
+                            <?php
+                            require_once 'ketnoi.php';
+                            if ($loai_sql = $conn->query("SELECT * FROM category")) {
+                                $i = 0;
+                                $string = '';
+                                $string = $string . "<select name='CategoryId'>";
+                                while ($i++ < $loai_sql->num_rows) {
+                                    $row = $loai_sql->fetch_array();
+                                    $string = $string . "<option value=";
+                                    $string = $string . $row[0];
+                                    $string = $string . ">";
+                                    $string = $string . $row[1];
+                                    $string = $string . "</option>";
+                                }
+                                $string = $string . "</select>";
+                                echo $string;
+                                // $loai_sql->free_result();
+                            }
+                            ?>
                         </div>
                         <button name="submit" class="btn btn-success">Thêm</button>
                     </form>
