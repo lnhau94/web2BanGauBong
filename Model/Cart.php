@@ -13,13 +13,13 @@
             $cart = new Cart();
             $DB = new DBConnect();
             $rs = $DB->getConnection()->query("
-                 select p.ProductName as name, c.qty as qty, p.ProductPrice as price, i.ImageUrl as imageurl
+                 select p.ProductId as id, p.ProductName as name, c.qty as qty, p.ProductPrice as price, i.ImageUrl as imageurl
                  from cart c join product p on c.productId = p.productId join image i on i.ProductId  = p.ProductId
                 where c.userId = ".$userId
                 );
 
             while($row = $rs->fetch_assoc()) {
-                $item = new CartItem($row['name'], $row['imageurl'], $row['price'], $row['qty']);
+                $item = new CartItem($row['id'],$row['name'], $row['imageurl'], $row['price'], $row['qty']);
                 $cart->addItem($item);
             }
             return $cart;
@@ -35,6 +35,7 @@
 
     }
     class CartItem{
+        private $id;
         private $name;
         private $imgUrl;
         private $price;
@@ -46,8 +47,9 @@
          * @param $price
          * @param $qty
          */
-        public function __construct($name, $imgUrl, $price, $qty)
+        public function __construct($id,$name, $imgUrl, $price, $qty)
         {
+            $this->id = $id;
             $this->name = $name;
             $this->imgUrl = $imgUrl;
             $this->price = $price;
@@ -61,6 +63,15 @@
         {
             return $this->name;
         }
+
+        /**
+         * @return mixed
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
 
         /**
          * @return mixed

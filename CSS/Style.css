@@ -68,12 +68,21 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition-duration: 0,3s; 
+    transition-duration: 0.3s;
 }
 
 #btnCart:hover {
     color: #bf1c45;
-    transition-duration: 0,3s;
+    transition-duration: 0.3s;
+}
+
+#btnCart:hover > a {
+    color: #bf1c45;
+    transition-duration: 0.3s;
+}
+#btnCart a{
+    color: #FF7B9B;
+    text-decoration: none;
 }
 
 /* Nút đăng nhập */ 
@@ -88,12 +97,13 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition-duration: 0,3s; 
+    transition-duration: 0.3s;
 }
+
 
 #btnLogin:hover {
     color: #bf1c45;
-    transition-duration: 0,3s;
+    transition-duration: 0.3s;
 }
 
 /* top menu */
