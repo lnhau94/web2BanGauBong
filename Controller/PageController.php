@@ -9,12 +9,12 @@ if($target == '' || $target == 'index.php'){
     include_once 'view/banner.php';
     showNewProduct();
 }
-if($target == 'about'){
-    include_once 'view/CartView.php';
-    include_once 'Model/Cart.php';
-    $cart = new CartView(Cart::getData(1));
-    echo $cart->show();
-}
+//if($target == 'cart'){
+//    include_once 'view/CartView.php';
+//    include_once 'Model/Cart.php';
+//    $cart = new CartView(Cart::getData(1));
+//    echo $cart->show();
+//}
 if(str_contains($target,"Category")){
     $id = explode("=",$target)[1];
     echo "<div class='hau-product-view'>";

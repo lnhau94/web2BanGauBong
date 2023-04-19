@@ -2,8 +2,10 @@ function OpenLogin(){
     ExitLog();
     if(!sessionStorage.getItem("userid")){
         document.getElementById('Login').style.display = "block";
+
     }else{
         sessionStorage.removeItem("userid");
+        document.getElementById("btnCart").style.display = "none";
         alert("logout!");
     }
 
@@ -20,7 +22,12 @@ function ExitLog(){
 }
 
 function HideShowPassword(){
-    document.getElementById("txtPassword").type = "text";
+    if(document.getElementById("txtPassword").type == "password"){
+        document.getElementById("txtPassword").type = "text";
+    }else{
+        document.getElementById("txtPassword").type = "password";
+    }
+
 }
 function login(){
     let username = document.getElementById("txtUsername").value;
@@ -30,6 +37,7 @@ function login(){
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText != "-1"){
                 sessionStorage.setItem("userid",this.responseText);
+                document.getElementById("btnCart").style.display = "block";
                 ExitLog();
             }else{
                 alert("Log in fail!");
