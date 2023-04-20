@@ -138,18 +138,98 @@ function showCart(){
     xmlhttp.send();
 }
 
+function checkStorage(item){
+    if(item.querySelector(".hau-cart-item-checkbox").checked){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let instock = this.responseText.split(":")[1];
+                let orderQty
+                    = item.querySelector(".hau-cart-item-qty").value;
+                instock = Number(instock);
+                orderQty = Number(orderQty);
+                if(orderQty > instock){
+                    alert("Storage is not enough");
+                    item.querySelector(".hau-cart-item-qty").value = instock;
+                    item.querySelector(".hau-cart-item-checkbox").checked = false;
+                }
+                // alert(this.responseText.split(":")[0] + "\n"
+                //     + this.responseText.split(":")[1]
+                // );
+            }
+        };
+        xmlhttp.open("POST",
+                "/api/storage.php?" +
+            "productId=" + item.dataset.id,
+            true);
+        xmlhttp.send();
+    }
+
+}
+
 function checkout(){
+    let sum = 0;
+    let itemList = {};
     document.querySelectorAll(".hau-cart-item").forEach(item=>{
         if(item.querySelector(".hau-cart-item-checkbox").checked){
-            console.log(item.dataset.id);
-            console.log(item.querySelector(".hau-cart-item-totalPrice"));
-            console.log(Number(item.querySelector(".hau-cart-item-qty").value)
-                *Number(item.querySelector(".hau-cart-item-price").value)
-            );
-            console.log(Number(item.querySelector(".hau-cart-item-totalPrice").innerText.replaceAll(",","")));
+            itemList[item.dataset.id] = Number(item.querySelector(".hau-cart-item-qty").value);
+            sum += Number(item.querySelector(".hau-cart-item-totalPrice").innerText.replaceAll(",",""));
 
         }
     })
+    let xmlhttp = new XMLHttpRequest();
+    let orderid = -1;
+    xmlhttp.onreadystatechange = async function (){
+        orderid = this.responseText;
+        console.log(orderid);
+        Object.keys(itemList).forEach(k=>{
+            console.log(orderid,k,itemList[k]);
+            insertOD(orderid,k,itemList[k]);
+            removeCart(k,sessionStorage.getItem("userid"));
+            console.log(k,sessionStorage.getItem("userid"));
+        });
+        showCart();
+    }
+    xmlhttp.open("POST",
+        "/api/checkout.php?" +
+        "cm=order"+
+        "&totalprice="+ sum +
+        "&userid=" +sessionStorage.getItem("userid"),
+        false);
+    xmlhttp.send();
+    if(orderid != -1){
+        alert("Order Success!\n Your Order Id: "+orderid);
+    }
+
+}
+
+function insertOD(orderid, productid, qty){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function (){
+        // console.log("success");
+    }
+    xmlhttp.open("POST",
+        "/api/checkout.php?" +
+        "cm=orderdetails"+
+        "&orderid="+ orderid +
+        "&productid=" +productid +
+        "&qty=" + qty,
+        true);
+    xmlhttp.send();
+}
+
+function removeCart(productId, userId){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function (){
+        console.log(this.responseText);
+    };
+    xmlhttp.open("POST",
+        "/api/checkout.php?" +
+        "cm=rmcart"+
+        "&userid="+ userId +
+        "&productid=" +productId,
+        true);
+    xmlhttp.send();
 }
 
 function calculateTotalPrice(element){
@@ -160,6 +240,7 @@ function calculateTotalPrice(element){
         element.value = 100;
     }
     let item = element.parentElement;
+    item.querySelector(".hau-cart-item-checkbox").checked = false;
     item.querySelector(".hau-cart-item-totalPrice").innerText =
         new Intl.NumberFormat().format(
             Number(item.querySelector(".hau-cart-item-price").innerText.replaceAll(",",""))*

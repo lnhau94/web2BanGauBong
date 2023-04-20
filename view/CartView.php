@@ -20,7 +20,7 @@
                         <input onchange="calculateTotalPrice(this)" class="hau-cart-item-qty" type="number" min="1" max="100" value ="'.$item->getQty().'">
                         <label class="hau-cart-item-totalPrice">'.number_format(intval($item->getPrice())*intval($item->getQty())).'</label>
                         <div class="hau-cart-item-function-holder">
-                            <input class="hau-cart-item-checkbox" type="checkbox">
+                            <input onchange="checkStorage(this.parentElement.parentElement)" class="hau-cart-item-checkbox" type="checkbox">
                             <button class="hau-cart-item-remove"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
