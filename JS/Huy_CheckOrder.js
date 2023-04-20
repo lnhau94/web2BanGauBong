@@ -18,13 +18,11 @@ document.querySelector(".huy-btn-search-order").addEventListener("click", (e) =>
       "&afterDate=" + afterDate,true);
       reqhttp_show.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          // console.log(this.responseText);
           document.querySelector(".huy-body").innerHTML = this.responseText;
           document.querySelectorAll(".huy-status").forEach((e) => {
             e.addEventListener("change", (ev) => {
               if (ev.target.value == "none" || ev.target.value == "done") {
                 ev.target.disabled = true;
-                ev.target.style.filter = 'blur(1px)';
               }
               var reqhttp = new XMLHttpRequest();
               var nameStatus = "";
