@@ -93,14 +93,14 @@
               $rs_orderdetails = $connect -> query('select distinct o.*,p.ProductName,p.ProductPrice,p.ProductSize from orderdetail o inner join product p on p.ProductId = o.ProductId where o.OrdersId = '.$rows_orders['OrdersId']);
               if ($this -> orderdetails == null){
                 $this -> orderdetails = array();
-                if ($rs_orderdetails -> num_rows > 0){
-                  while ($rows_orderdetails = $rs_orderdetails -> fetch_assoc()){
-                    array_push($this -> orderdetails, new OrderDetail($rows_orderdetails['OrdersId'],$rows_orderdetails['ProductId'],$rows_orderdetails['ProductName'],
-                                                                      $rows_orderdetails['ProductPrice'],$rows_orderdetails['ProductSize'],$rows_orderdetails['OrderQuantity']));
-                  }
-                  array_push($this -> orders, new Order($rows_orders['OrdersId'],$rows_orders['TotalPrice'],
-                                                        $rows_orders['OrdersDate'], $rows_orders['UsersId'], $rows_orders['Status'],$this -> orderdetails));
+              }
+              if ($rs_orderdetails -> num_rows > 0){
+                while ($rows_orderdetails = $rs_orderdetails -> fetch_assoc()){
+                  array_push($this -> orderdetails, new OrderDetail($rows_orderdetails['OrdersId'],$rows_orderdetails['ProductId'],$rows_orderdetails['ProductName'],
+                                                                    $rows_orderdetails['ProductPrice'],$rows_orderdetails['ProductSize'],$rows_orderdetails['OrderQuantity']));
                 }
+                array_push($this -> orders, new Order($rows_orders['OrdersId'],$rows_orders['TotalPrice'],
+                                                      $rows_orders['OrdersDate'], $rows_orders['UsersId'], $rows_orders['Status'],$this -> orderdetails));
               }
             }
             foreach($this -> orders as $item) {
@@ -159,11 +159,11 @@
               echo '</div>'; // Close div of "huy-detail-product"
               foreach ($item -> getOrderDetail() as $detailOrder) {
                 echo '<div class="huy-detail-product">';
-                echo '<label>'.$detailOrder -> getProductName().'</label><br>';
+                echo '<label style="width: 100%; display: block; font-weight: bold;">'.$detailOrder -> getProductName().'</label><br>';
                 echo '<label>'.$detailOrder -> getProductSize().'</label>';
                 echo '<label>'.$detailOrder -> getOrderQty().'</label>';
-                echo '<label>'.$detailOrder -> getProductPrice().'</label>';
-                echo '<label>'.$detailOrder -> getProductPrice() * $detailOrder -> getOrderQty().'</label>';
+                echo '<label>'.$detailOrder -> getProductPrice().'đ'.'</label>';
+                echo '<label>'.$detailOrder -> getProductPrice() * $detailOrder -> getOrderQty().'đ'.'</label>';
                 echo '</div>'; // Close div of "huy-detail-product"
               }
               // echo '<div class="huy-detail-product">';
