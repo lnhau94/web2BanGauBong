@@ -6,7 +6,5 @@
     $status = $_REQUEST['status'];
     $connect = $connect_db -> getConnection();
     $connect -> query('update orders set Status = "'.$status.'" where OrdersId = '.$id);
-    echo $id;
-    echo $status;
   }
 ?>
