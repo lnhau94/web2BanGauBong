@@ -1,0 +1,71 @@
+@keyframes zoomout {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.hau-form-holder{
+    background-color: rgba(97, 97, 97, 0.67);
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+.hau-form{
+    background-color: #FFF4F9;
+    width: 300px;
+    max-height: 80%;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+.hau-form-element{
+    color: #FF7B9B;
+    padding: 5px;
+    margin: 5px;
+}
+
+.hau-table-item{
+    background-color: transparent;
+    color: inherit;
+    border-color: transparent;
+}
+
+.hau-admin-label{
+    color: #FF7B9B;
+    font-size: 1.3rem;
+    padding: 5px;
+}
+
+.hau-category-header{
+    background-color: #FF7B9B;
+    color: #FFF4F9;
+    display: grid;
+    grid-template-columns: 40% 30% auto;
+    padding: 5px;
+}
+
+.hau-category-body >*:nth-child(2n+1){
+    background-color: #FFF4F9;
+    color: #FF7B9B;
+}
+
+.hau-category-body > *:nth-child(2n){
+    background-color: #fdbdcd;
+    color: white;
+}
+.hau-category-table-row{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 40% 30% auto;
+}
+.hau-category-table{
+    border: 2px solid #FFF4F9;
+    animation: zoomout 0.3s forwards;
+}

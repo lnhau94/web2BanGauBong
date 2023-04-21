@@ -47,8 +47,9 @@ function OpenUpdate(index){
     button.innerHTML = html;
     document.getElementById('Account-Form').action = "Templates/Admin/Account/Database/UpdateData.php";
     OpenEditFrm();
-    
+
     let label_username = document.getElementById('lab-username-'+index).innerHTML;
+    let label_name = document.getElementById('lab-name-'+index).innerHTML;
     let label_password = document.getElementById('lab-password-'+index).innerHTML;
     let label_number_phone = document.getElementById('lab-number-'+index).innerHTML;
     let label_email = document.getElementById('lab-email-'+index).innerHTML;
@@ -57,6 +58,7 @@ function OpenUpdate(index){
     let label_status = document.getElementById('lab-status-'+index).innerHTML;
 
     let input_username = document.getElementById('txt-username');
+    let input_name = document.getElementById('txt-name');
     let input_password = document.getElementById('txt-password');
     let input_number_phone = document.getElementById('txt-number-phone');
     let input_email = document.getElementById('txt-email');
@@ -69,12 +71,13 @@ function OpenUpdate(index){
     input_username.style.backgroundColor = "#c0c0c0";
 
     input_username.value = label_username;
+    input_name.value = label_name;
     input_password.value = label_password;
     input_email.value = label_email;
     input_number_phone.value = label_number_phone;
     input_address.value = label_address; 
     
-    if ( label_status == "Unlock" ){
+    if ( label_status == "Đang hoạt động" ){
         rad_unlock.checked = true;
     } else {
         rad_lock.checked=true;
@@ -174,7 +177,7 @@ function CheckInsertElement(){
     } else {
             email_attention.innerHTML = "";
         }
-    }
+
 
     if (input_address.value == ""){
         address_attention.innerHTML = `<p class="warning-information">Địa chỉ không được bỏ trống!</p>`;
@@ -207,7 +210,7 @@ function CheckInsertElement(){
 
     if (flag == true){
         OpenAttentionInsert();
-    } 
+    }
 }
 
 // Hàm kiểm tra dữ liệu update

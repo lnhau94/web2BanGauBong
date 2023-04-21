@@ -12,7 +12,7 @@ $CategoryId = $_POST['CategoryId'];
 // Kết nối CSDL
 require_once 'ketnoi.php';
 
-$target_dir = "uploads/";
+$target_dir = __DIR__."/../../img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -84,7 +84,7 @@ if (mysqli_query($conn, $them_sql)) {
   mysqli_query($conn,$insertImage);
 
   //Trở về trang liệt kê
-  header("Location: index.php");
+    header("Location: /admin/index.php?select=product");
 }
 
 ?>
