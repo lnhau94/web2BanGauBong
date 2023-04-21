@@ -4,12 +4,6 @@
         <label style="font-size: 24px; color: #950b2d; "><b>THÔNG TIN TÀI KHOẢN</b></label>
     </div>
 
-    <!-- tìm kiếm -->
-    <div class="search-bar" style="background-color: #ffd5df;">
-        <button class="btn-search" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-        <input class="txt-search" type="text" placeholder="Nhập dữ liệu bạn muốn tìm!">
-    </div>
-
     <!-- bảng dữ liệu -->
     <div class="Account-table" style="background-color: #ffe4ea;">
         <div class="heading-table">

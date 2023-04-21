@@ -131,6 +131,12 @@ function DeleteAttentionOpen(index){
 function CheckInsertElement(){
     let flag = true;
 
+    let username_attention = document.getElementById('username-attention');
+    let password_attention = document.getElementById('password-attention');
+    let email_attention = document.getElementById('email-attention');
+    let address_attention = document.getElementById('address-attention');
+    let number_attention = document.getElementById('number-attention');
+
     let input_username = document.getElementById('txt-username');
     let input_password = document.getElementById('txt-password');
     let input_number_phone = document.getElementById('txt-number-phone');
@@ -138,43 +144,70 @@ function CheckInsertElement(){
     let input_address = document.getElementById('txt-address');
 
     if (input_username.value == ""){
-        document.getElementById('username-row').innerHTML = `<p class="warning-information">Tên người dùng không được bỏ trống!</p>`;
+        username_attention.innerHTML = `<p class="warning-information">Tên người dùng không được bỏ trống!</p>`;
         flag = false;
     } else {
-        if (input_username.value.length >= 20){
-            document.getElementById('username-row').innerHTML = `<p id="username-warning-2" class="warning-information">Tên người dùng không được quá 20 ký tự!</p>`;
+        if (input_username.value.length > 20){
+            username_attention.innerHTML = `<p class="warning-information">Tên người dùng không được quá 20 ký tự!</p>`;
             flag = false;
+        } else {
+            username_attention.innerHTML = "";
+        }
+    }
+    
+
+    if (input_password.value == ""){
+        password_attention.innerHTML = `<p class="warning-information">Mật khẩu không được bỏ trống!</p>`;
+        flag = false;
+    } else {
+        if (input_password.value.length > 30){
+            password_attention.innerHTML = `<p class="warning-information">Mật khẩu không được quá 30 ký tự!</p>`;
+            flag = false;
+        } else {
+            password_attention.innerHTML = "";
         }
     }
 
-    if (input_password == ""){
-        document.getElementById('password-warning-1').style.display = "block";
+    if (input_email.value == ""){
+        email_attention.innerHTML = `<p class="warning-information">Email không được bỏ trống!</p>`;
         flag = false;
     } else {
-        if (input_password.length >= 30){
-            document.getElementById('password-warning-2').style.display = "block";
-            flag = false;
+            email_attention.innerHTML = "";
         }
     }
 
-    if (input_number_phone == ""){
-        document.getElementById('phone-warning-1').style.display = "block";
+    if (input_address.value == ""){
+        address_attention.innerHTML = `<p class="warning-information">Địa chỉ không được bỏ trống!</p>`;
         flag = false;
-    }
+    } 
 
-    if (input_email == ""){
-        document.getElementById('email-warning-1').style.display = "block";
-        flag = false;
-    }
+    var Vali_Numbers = /^[0-9]+$/;
 
-    if (input_address == ""){
-        document.getElementById('address-warning-1').style.display = "block";
+    if (input_number_phone.value == ""){
+        number_attention.innerHTML = `<p class="warning-information">Số điện thoại không được bỏ trống!</p>`;
         flag = false;
+    } else {
+        if (!input_number_phone.value.match(Vali_Numbers)){
+            number_attention.innerHTML = `<p class="warning-information">Ký tự bất buộc là các số (0 - 9)</p>`;
+            flag = false;
+        } else {
+            if (input_number_phone.value.length != 10){
+                number_attention.innerHTML = `<p class="warning-information">Số điện thoại bất buộc có 10 ký tự!</p>`;
+                flag = false;
+            } else {
+                if (input_number_phone.value.charAt(0) != "0"){
+                    number_attention.innerHTML = `<p class="warning-information">Số điện thoại bất đầu là số 0!</p>`;
+                    flag = false;
+                } else {
+                    number_attention.innerHTML = "";
+                }
+            }
+        }
     }
 
     if (flag == true){
         OpenAttentionInsert();
-    }
+    } 
 }
 
 // Hàm kiểm tra dữ liệu update
