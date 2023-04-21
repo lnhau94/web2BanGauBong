@@ -87,7 +87,7 @@ body{
 /* Account site */
 .Account-Site{
     display: grid;
-    grid-template-rows: 50px 50px calc(100vh - 150px) 50px;
+    grid-template-rows: 50px  calc(100vh - 100px) 50px;
     
 }
 
@@ -108,40 +108,6 @@ body{
     background-color: #ffa7bd;
     transition-duration: 0.3s;
 }
-
-/* ô tìm kiếm */
-    
-.txt-search{
-    float: right;
-    padding: 5px 10px;
-    width: 250px;
-    font-size: 12px; 
-    color: #ff2289;
-    border-radius: 5px;
-    border: 1px solid #ff2289;
-}
-
-::placeholder { 
-    color: #ff6fb2;
-}
-
-.btn-search {
-    background-color: transparent;
-    margin-right: 20px;
-    margin-left: 10px;
-    float: right;
-    color:#ff2289;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    transition-duration: 0.3s;
-}
-
-.btn-search:hover {
-    color: #950b2d;
-    transition-duration: 0.3s;
-}
-/* Bảng dữ liệu */
 
 .heading-table{
     border-top-right-radius: 10px;

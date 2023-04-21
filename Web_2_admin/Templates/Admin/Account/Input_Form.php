@@ -7,36 +7,34 @@
             </div>
 
             <div class="input-container">
-                <div class="row-detail" id="username-row">
+                <div class="row-detail">
                     <label class="lab-input-detail">Tên người dùng: </label><br>
                     <input class="txt-input-detail" id="txt-username" type="text" placeholder="Nhập tên người dùng ở đây!" name="username">
-                    <p id="username-warning-1" class="warning-information">Tên người dùng không được bỏ trống!</p>
-                    <p id="username-warning-2" class="warning-information">Tên người dùng không được quá 20 ký tự!</p>
+                    <div id="username-attention"></div>
                 </div>
 
                 <div class="row-detail">
                     <label class="lab-input-detail">Mật khẩu: </label><br>
                     <input class="txt-input-detail" id="txt-password" type="text" placeholder="Nhập mật khẩu ở đây!" name="password"><br>
-                    <p id="password-warning-1" class="warning-information">Mật khẩu không được bỏ trống!</p>
-                    <p id="password-warning-2" class="warning-information">Mật khẩu không được quá 30 ký tự!</p>
+                    <div id="password-attention"></div>
                 </div>
 
                 <div class="row-detail">
                     <label class="lab-input-detail">Email: </label><br>
                     <input class="txt-input-detail" id="txt-email" type="text" placeholder="Nhập Email ở đây!" name="email"><br>
-                    <p id="email-warning-1" class="warning-information">Email không được bỏ trống!</p>
+                    <div id="email-attention"></div>
                 </div>
 
                 <div class="row-detail">
                     <label class="lab-input-detail">Số điện thoại: </label><br>
                     <input class="txt-input-detail" id="txt-number-phone" type="text" placeholder="Nhập Số điện thoại ở đây!" name="number_phone"><br>
-                    <p id="phone-warning-1" class="warning-information">Số điện thoại không được bỏ trống!</p>
+                    <div id="number-attention"></div>
                 </div>
 
                 <div class="row-detail">
                     <label class="lab-input-detail">Địa chỉ: </label><br>
                     <input class="txt-input-detail" id="txt-address" type="text" placeholder="Nhập địa chỉ ở đây!" name="address"><br>
-                    <p id="address-warning-1" class="warning-information">Địa chỉ không được bỏ trống!</p>
+                    <div id="address-attention"></div>
                 </div>
 
                 <div class="row-detail">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <script src="JS/Admin.js"></script>
-</head>
+  
 <body>
     <?php 
         include "Templates/Admin/Nav_Bar.php";
