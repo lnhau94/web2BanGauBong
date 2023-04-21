@@ -13,6 +13,9 @@
             case 'None':
                 include "Templates/Admin/None_Site/None_Site.php";
                 break;
+            case 'bill':
+                include __DIR__."/../../../view/CheckOrder.php";
+                break;
         }
     ?>
 </div>
