@@ -14,6 +14,12 @@
                 </div>
 
                 <div class="row-detail">
+                    <label class="lab-input-detail">Tên người dùng: </label><br>
+                    <input class="txt-input-detail" id="txt-name" type="text" placeholder="Nhập tên người dùng ở đây!" name="name">
+                    <div id="name-attention"></div>
+                </div>
+
+                <div class="row-detail">
                     <label class="lab-input-detail">Mật khẩu: </label><br>
                     <input class="txt-input-detail" id="txt-password" type="text" placeholder="Nhập mật khẩu ở đây!" name="password"><br>
                     <div id="password-attention"></div>
@@ -40,17 +46,25 @@
                 <div class="row-detail">
                     <label class="lab-input-detail">Phân quyền: </label><br>
                     <select id="cbx-role" name="role" class="cmb-input-detail">
-                        <option value="Customer">Khách hàng</option>
-                        <option value="Staff">Nhân Viên</option>
-                        <option value="Admin">Quản lý</option>
+                    <?php
+                    include_once __DIR__.'/../../../../util/dbconnect.php';
+
+                    // Kết nối database
+                    $conn = new DBConnect();
+                    $conn = $conn->getConnection();
+                    $rs = $conn -> query("select * from roles");
+                    while($row = $rs -> fetch_assoc()){
+                        echo '<option value="'.$row['RolesId'].'">'.$row['RolesName'].'</option>';
+                    }
+                    ?>
                     </select>
                 </div>
 
                 <div class="row-detail">
                     <label class="lab-input-detail">Tình trạng: </label><br>
                     <div class="radio-panel" style="margin: 5px;">
-                        <input class="rad-choice" id="rad-unlock" type="radio" name="status" value="Unlock"><label class="lab-rad">Mở Khóa</label><br>
-                        <input class="rad-choice" id="rad-lock" type="radio" name="status" value="Lock"><label class="lab-rad">Khóa</label><br>
+                        <input class="rad-choice" id="rad-unlock" type="radio" name="status" value="Đang hoạt động"><label class="lab-rad">Mở Khóa</label><br>
+                        <input class="rad-choice" id="rad-lock" type="radio" name="status" value="Vô hiệu hóa"><label class="lab-rad">Khóa</label><br>
                         <p style="padding: 4px;font-size: 10px; color: red; margin-left: 10px;">Lưu ý: Nếu bạn chọn khóa tài khoản này. Tài khoản sẽ bị vô hiệu hóa tạm thời và không thể sữ dụng được</p>
                     </div>
                 </div>

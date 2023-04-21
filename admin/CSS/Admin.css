@@ -70,8 +70,9 @@ body{
 /* Content */
 .Home-Content{
     position: absolute;
-    height: 100px;
+    height: 100vh;
     width: calc(100% - 50px);
+    overflow-y: scroll;
     left: 50px;
     transition-duration: 0.25s;
 }
@@ -113,7 +114,7 @@ body{
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     display: grid;
-    grid-template-columns: 40% 40% 20%;
+    grid-template-columns: 30% 30% 20% 20%;
     margin: 10px 10px 0px 10px;
     background-color: #ff56a5;
     color:#ffeef2;
@@ -134,7 +135,7 @@ body{
 
 .row-data{
     display: grid;
-    grid-template-columns: 40% 40% 20%;
+    grid-template-columns: 30% 30% 20% 20%;
     background-color: #ffd6e9;
     color:#7b0042;
     transition-duration: 0.2s;
@@ -142,7 +143,8 @@ body{
 
 .sup-data{
     background-color: #fff0f9;
-    transition-duration: 0.2s;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.2s;;
     height:0px;
     grid-area: 2 / 1 /  2 /  4;
 }
@@ -153,13 +155,13 @@ body{
 }
 
 .row-data:hover > .sup-data{
-    height: 100px;
+    height: 200px;
 }
 
 
 .row-data:hover > .sup-data .detail-data{
     opacity: 2;
-    transition-duration: 0.s;
+    transition-duration: 0.3s;
 }
 
 .sup-data .detail-data{
@@ -232,7 +234,8 @@ body{
     position: relative;
     top: 20px;
     margin: auto auto 10% auto; 
-    width: 400px; 
+    width: 400px;
+    height: 100%;
     border-radius: 20px;
     background-color:#ffc6d2;
 }
@@ -245,6 +248,8 @@ body{
 
 .input-form .input-container {
     background-color:rgb(255, 255, 255);
+    overflow-y: scroll;
+    height: 80%;
 }
 
 .input-form .input-container .row-detail{

@@ -13,6 +13,16 @@
             case 'None':
                 include "Templates/Admin/None_Site/None_Site.php";
                 break;
+            case 'bill':
+                include __DIR__."/../../../view/CheckOrder.php";
+                break;
+            case 'product':
+                include __DIR__."/../../../Web2_TeddyStore/yang/lietke.php";
+                break;
+            case 'category':
+                include __DIR__."/../../Category/CategoryListView.php";
+                break;
+
         }
     ?>
 </div>

@@ -1,17 +1,17 @@
 <?php
-  echo '
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/Huy_CheckOrder.css">
-    <title>Orders</title>
-  </head>
-  ';
-  echo '<body>';
+//  echo '
+//  <!DOCTYPE html>
+//  <html lang="en">
+//  <head>
+//    <meta charset="UTF-8">
+//    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+//    <link rel="stylesheet" href="../CSS/Huy_CheckOrder.css">
+//    <title>Orders</title>
+//  </head>
+//  ';
+//  echo '<body>';
   echo '<div class="huy-container-orders">';
   echo '
     <div class="huy-datepicker">
@@ -39,6 +39,6 @@
   echo '</div>'; // Close div of "huy-body"
   echo '</div>'; // Close div of "huy-table"
   echo '</div>'; // Close div of "huy-container-orders"
-  echo '</body>';
+//  echo '</body>';
   echo '<script src="../JS/Huy_CheckOrder.js"></script>';
 ?>

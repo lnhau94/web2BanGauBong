@@ -106,6 +106,6 @@ if (mysqli_query($conn, $capnhat_sql)) {
     // echo "<h1>Cập nhật thành công</h1>";
 
     //Trở về trang liệt kê
-    header("Location: lietke.php");
+    header("Location: /admin/index.php?select=product");
 }
 ?>
