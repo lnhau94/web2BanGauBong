@@ -7,6 +7,28 @@
     }
 }
 
+.currentRoleChoice{
+    background-color: #FF7B9B;
+    color: #FFF4F9;
+    transition: all 300ms ease-in-out;
+}
+
+.hau-role-header, .hau-role-table-row, .hau-function-header, .hau-function-table-row{
+    display: grid;
+    grid-template-columns: 30% 30% auto ;
+}
+.hau-function-table-row >input[type="checkbox"]{
+    width: 30px;
+    height: 30px;
+    accent-color: #FF7B9B;
+}
+.hau-role-container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 40% auto;
+    height: 100%;
+}
+
 .hau-form-holder{
     background-color: rgba(97, 97, 97, 0.67);
     display: none;

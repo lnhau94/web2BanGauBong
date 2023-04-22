@@ -22,6 +22,9 @@
             case 'category':
                 include __DIR__."/../../Category/CategoryListView.php";
                 break;
+            case 'role':
+                include __DIR__."/../../Role/RolesView.php";
+                break;
 
         }
     ?>
