@@ -16,3 +16,15 @@ function removeCategory(element){
     xml.open("POST","/admin/Category/RemoveCategory.php?id=" + element.dataset.id,true);
     xml.send();
 }
+
+function showRoleInputForm(){
+
+}
+
+function editRole(element){
+
+}
+
+function removeRole(element){
+
+}

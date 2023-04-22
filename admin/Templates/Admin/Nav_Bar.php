@@ -31,11 +31,11 @@
         ?>
 
         <!-- Khởi tạo nút đăng xuất -->
-<!--        <li >-->
-<!--            <a href="/admin/index.php?action=logout" style="color: red;">-->
-<!--                <i class="fa-solid fa-right-from-bracket"></i>-->
-<!--                <span class="link_name">ĐĂNG XUẤT</span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li >
+            <a href="/admin/Login/Logout.php" style="color: red;">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="link_name">ĐĂNG XUẤT</span>
+            </a>
+        </li>
     </ul>
 </div>

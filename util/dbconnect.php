@@ -6,8 +6,8 @@ class DBConnect
 
     private $db = 'webbear';
     private $sv = 'webbear.mysql.database.azure.com';
-    private $us = 'webbear';
-    private $pw = 'webbear01';
+    private $us = 'lnhau';
+    private $pw = 'lnhau94';
     private $connection;
     function __construct()
     {
