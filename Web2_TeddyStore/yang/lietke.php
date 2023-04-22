@@ -61,9 +61,16 @@
                 <td><?php echo $r['ProductSize']; ?></td>
                 <td><?php echo $r['ProductStatus']; ?></td>
                 <td><?php echo $r['CategoryName']; ?></td>
-                <td>
-                    <a href="/Web2_TeddyStore/yang/sua.php?sid=<?php echo $r['ProductId']; ?>" class="btn btn-info">Sửa</a>
-                </td>
+                <?php
+                    if(in_array("product-edit",$_SESSION['permission'])){
+                        echo '
+                        <td>
+                            <a href="/Web2_TeddyStore/yang/sua.php?sid='.$r['ProductId'].'" class="btn btn-info">Sửa</a>
+                        </td>
+                        ';
+                    }
+                ?>
+
             </tr>
             <?php
         }
