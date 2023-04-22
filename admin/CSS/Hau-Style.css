@@ -6,6 +6,48 @@
         transform: scale(1);
     }
 }
+@keyframes slide-down {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+.hau-chart-holder{
+    display: none;
+    width: 80%;
+}
+.hau-statistics-table{
+    height: 80%;
+    overflow-y: scroll;
+    margin: 10px;
+    animation: slide-down 400ms forwards;
+}
+.hau-statistics-body{
+    height: 80%;
+    overflow-y: scroll;
+}
+.hau-statistics-row, .hau-statistic-header{
+    display: grid;
+    grid-template-columns: 15% 25% 20% auto 20%;
+    border: 1px solid #FFF4F9;
+    padding: 5px;
+
+}
+.hau-statistic-header{
+    background-color: #FF7B9B;
+    color: #FFF4F9;
+}
+.hau-statistics-row:nth-child(even){
+    background-color: #fdbdcd;
+    color: #FFF4F9;
+}
+.hau-statistics-row:nth-child(odd){
+    background-color: #FFF4F9;
+    color: #FF7B9B;
+}
 
 .currentRoleChoice{
     background-color: #FF7B9B;

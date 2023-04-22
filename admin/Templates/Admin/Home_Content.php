@@ -25,6 +25,9 @@
             case 'role':
                 include __DIR__."/../../Role/RolesView.php";
                 break;
+            case 'statistics':
+                include __DIR__."/../../Statistics/StatisticsView.php";
+                break;
 
         }
     ?>
