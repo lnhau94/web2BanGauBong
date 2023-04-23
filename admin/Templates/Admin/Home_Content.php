@@ -28,6 +28,9 @@
             case 'statistics':
                 include __DIR__."/../../Statistics/StatisticsView.php";
                 break;
+            case "storage":
+                include __DIR__."/../../Storage/Storage.php";
+                break;
 
         }
     ?>
