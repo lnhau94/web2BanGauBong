@@ -1,5 +1,5 @@
 *{
-    font-family: 'Inter';
+    font-family: 'SF Pro Display';
     padding: 0;
     margin: 0;
 }
@@ -44,18 +44,45 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition-duration: 0,3s; 
+    transition-duration: 0.3s;
 } 
 
 #btnSearch:hover {
     color: #bf1c45;
-    transition-duration: 0,3s;
+    transition-duration: 0.3s;
 }
 
 /* 
 #btnSearch {
     text-shadow: 1px 1px 1px  #bf1c4591;
 } */
+
+#btnOrder {
+    font-size: 18px;
+    margin-top: 45px;
+    float: right;
+    width: 40px;
+    height: 40px;
+    color: #FF7B9B;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+#btnOrder:hover {
+    color: #bf1c45;
+    transition-duration: 0.3s;
+}
+
+#btnOrder:hover > a {
+    color: #bf1c45;
+    transition-duration: 0.3s;
+}
+#btnOrder a{
+    color: #FF7B9B;
+    text-decoration: none;
+}
 
 /* Nút giỏ hàng */
 #btnCart {
@@ -184,7 +211,7 @@
     margin: 5% auto 10% auto; 
     display: block; 
     width: 450px ;
-    height: 560px;
+    height: 100%;
     border-radius: 20px;
     background: #FFF4F9;
     
@@ -262,13 +289,13 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition-duration: 0,3s; 
+    transition-duration: 0.3s;
     font-size:24px;
 } 
 
 #btnCloseFrm:hover {
     color: #bf1c45;
-    transition-duration: 0,3s;
+    transition-duration: 0.3s;
 }
 
 /* nền đen che màn hình */

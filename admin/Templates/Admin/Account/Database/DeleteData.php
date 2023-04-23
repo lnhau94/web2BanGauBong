@@ -11,7 +11,7 @@
     $sql = "DELETE FROM `users` WHERE UsersAccount = '$username'";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: /Web_2_Admin/index.php?select=account");
+        header("Location: /admin/index.php?select=account");
     }
     
     mysqli_close($conn);

@@ -31,7 +31,7 @@ class Products extends DBConnect{
     public function getNewProducts(){
         $products = array();
         $rs = $this -> getConnection()
-            -> query($this->selectQuery." order by p.ProductId desc limit 10");
+            -> query($this->selectQuery." where p.ProductStatus = n'Đang bán' order by p.ProductId desc limit 10");
         if($rs->num_rows>0){
             while($row = $rs->fetch_assoc()){
                 array_push($products,$this->productFromRow($row));
@@ -42,7 +42,7 @@ class Products extends DBConnect{
     public function getByCategoryId($categoryId){
         $products = array();
         $rs = $this -> getConnection()
-            -> query($this->selectQuery." where p.CategoryId = $categoryId");
+            -> query($this->selectQuery." where p.CategoryId = $categoryId and p.ProductStatus = n'Đang bán'");
         if($rs->num_rows>0){
             while($row = $rs->fetch_assoc()){
                 array_push($products,$this->productFromRow($row));
@@ -53,7 +53,7 @@ class Products extends DBConnect{
     public function getAllProduct(){
         $products = array();
         $rs = $this -> getConnection()
-            -> query($this->selectQuery);
+            -> query($this->selectQuery. " where p.ProductStatus = n'Đang bán'");
         if($rs->num_rows>0){
             while($row = $rs->fetch_assoc()){
                 array_push($products,$this->productFromRow($row));
@@ -64,7 +64,7 @@ class Products extends DBConnect{
     public function getProduct($page = 1,$productCount=5, $categories = "('1','2')"){
         $products = array();
         $rs = $this -> getConnection()
-            -> query($this->selectQuery." WHERE p.CategoryId in ".$categories." 
+            -> query($this->selectQuery." WHERE p.CategoryId in ".$categories." and p.ProductStatus = n'Đang bán' 
                                  order by p.ProductId limit ".$productCount*$page.", ".$productCount);
         if($rs->num_rows>0){
             while($row = $rs->fetch_assoc()){
@@ -80,6 +80,7 @@ class Products extends DBConnect{
             -> query($this->selectQuery." WHERE p.CategoryId in ".$categories." 
                                  and p.ProductName like n'%".$name."%'  
                                  and p.ProductPrice between ".$minPrice." and ".$maxPrice." 
+                                 and p.ProductStatus = n'Đang bán' 
                                  order by p.ProductId limit ".$productCount*($page-1).", ".$productCount);
         if($rs->num_rows>0){
             while($row = $rs->fetch_assoc()){
@@ -96,7 +97,7 @@ class Products extends DBConnect{
         if ($name != ""){
             $queryString = $queryString." and p.ProductName like n'%".$name."%' ";
         }
-        $queryString = $queryString." and p.ProductPrice between ".$minPrice." and ".$maxPrice." 
+        $queryString = $queryString." and p.ProductPrice between ".$minPrice." and ".$maxPrice." and p.ProductStatus = n'Đang bán' 
                                         order by p.ProductId ";
 
         $rs = $this -> getConnection()

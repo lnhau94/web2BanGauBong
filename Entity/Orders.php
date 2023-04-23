@@ -101,6 +101,7 @@
                 }
                 array_push($this -> orders, new Order($rows_orders['OrdersId'],$rows_orders['TotalPrice'],
                                                       $rows_orders['OrdersDate'], $rows_orders['UsersId'], $rows_orders['Status'],$this -> orderdetails));
+                $this -> orderdetails = null;
               }
             }
             foreach($this -> orders as $item) {

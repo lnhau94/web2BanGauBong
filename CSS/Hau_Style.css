@@ -3,6 +3,57 @@
     margin: 0;
 }
 
+.hau-order-holder{
+    width: 80%;
+    height: 100%;
+    overflow-y: scroll;
+    margin-left: 10%;
+
+}
+
+.container .huy-column{
+    text-align: center;
+    line-height: inherit;
+    background-color: #fdbdcd;
+    padding: 3px;
+    margin: 2px;
+}
+.container .huy-row{
+    border: 2px solid #FF7B9B;
+    margin-bottom: 5px;
+    padding: 2px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    box-shadow: 3px 3px 2px 1px #fdbdcd ;
+}
+.container .huy-row:hover  .hau-detail-product{
+    display: flex !important;
+}
+.hau-detail-product{
+    font-size: 12px;
+    display: none !important;
+    animation: slide-down 300ms forwards;
+}
+
+.hau-detail-product:nth-child(odd){
+    background-color: #717171;
+    color: #FFF4F9;
+}
+.hau-detail-product:nth-child(even){
+    background-color: #FFF4F9;
+    color: #FF7B9B;
+}
+
+.container .huy-column input[value="Đã thanh toán"] {
+    background-color: #2ecc71 ;
+}
+
+.container .huy-column input[value="Đang chờ xử lý"] {
+    background-color: #f1c40f ;
+}
+.container .huy-column input[value="Từ chối"] {
+    background-color: #bf1c45 ;
+}
 
 .hau-container-label{
     background-color: #FF7B9B;

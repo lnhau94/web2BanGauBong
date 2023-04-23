@@ -6,9 +6,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $rs = $DB -> getConnection()
         -> query(
             'select usersId from users where UsersAccount = "'.$_REQUEST['username'].'" 
-            and UsersPassword = "'.$_REQUEST['pass'].'"');
-    if ($rs ->num_rows){
-        echo $rs ->fetch_array()[0];
+            and UsersPassword = "'.$_REQUEST['pass'].'" and status = "Đang hoạt động"');
+    if ($rs ->num_rows > 0){
+        echo "0";
     }
     else{
         echo -1;
