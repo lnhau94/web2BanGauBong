@@ -7,16 +7,20 @@
     
     <!-- Tìm kiếm -->
     <div class="search-holder">
-        <button id="btnSearch" name="btnSearch">
-            <i class="fa-solid fa-magnifying-glass"></i>
-         </button>
-        <input id="txtSearch" name="txtSearch" type="text" placeholder=" Bạn muốn tìm gì?">
+<!--        <button id="btnSearch" name="btnSearch">-->
+<!--            <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--         </button>-->
+<!--        <input id="txtSearch" name="txtSearch" type="text" placeholder=" Bạn muốn tìm gì?">-->
     </div>
 
     <!-- Đăng nhập và giỏ hàng-->
     <div class="login-function">
         <button id="btnLogin" onclick="OpenLogin()">
             <i class="fa-solid fa-user"></i>
+        </button>
+
+        <button id="btnOrder" onclick="showOrder()">
+            <i class="fa-solid fa-list"></i>
         </button>
 
         <button id="btnCart" onclick="showCart()">

@@ -86,15 +86,20 @@ function OpenUpdate(index){
     // Khu vực thực hiện phân quyền
     // Đây chỉ là giải pháp tạm thời nên cần được thấy thế khi hoàn thành chương trình
     let cbx_role = document.getElementById('cbx-role');
-    if (label_role == "Customer"){
-        cbx_role.selectedIndex = 0;
-    } else {
-        if (label_role == "Staff"){
-            cbx_role.selectedIndex = 1;
-        } else {
-            cbx_role.selectedIndex = 2;
+    cbx_role.querySelectorAll("option").forEach(e=>{
+        if(e.innerText == label_role){
+            e.selected = true;
         }
-    }
+    });
+    // if (label_role == "Customer"){
+    //     cbx_role.selectedIndex = 0;
+    // } else {
+    //     if (label_role == "Staff"){
+    //         cbx_role.selectedIndex = 1;
+    //     } else {
+    //         cbx_role.selectedIndex = 2;
+    //     }
+    // }
     //---------------------------------------------------
 }
 

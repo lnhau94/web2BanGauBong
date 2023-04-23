@@ -9,10 +9,10 @@
 
 @keyframes slide-up {
     0%{
-        transform: translateY(0%);
+        transform: translateY(100%);
     }
     100%{
-        transform: translateY(-100%);
+        transform: translateY(0%);
     }
 }
 @keyframes slide-left {
@@ -56,7 +56,11 @@
     transition: all 300ms ease-in-out;
 }
 .hau-slider-holder{
-    /*position: relative;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FF7B9B;
+    font-size: 0.5 rem;
 }
 
 .hau-cate-holder{

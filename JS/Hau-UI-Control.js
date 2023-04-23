@@ -5,9 +5,12 @@ function showMinPrice(){
         style: 'currency',
         currency: 'VND',
     });
-    document.getElementById("min-price-value").innerText = "from:" + formatter.format(minS.value);
-    maxS.min = minS.value;
-    maxS.width = (maxS.max - maxS.min)/(maxS.max - minS.min);
+    if(maxS.value < minS.value){
+        maxS.value = minS.value;
+    }
+    document.getElementById("min-price-value").innerText = "Min:" + formatter.format(minS.value);
+    document.getElementById("max-price-value").innerText = "Max:" +formatter.format(document.getElementById("max-price-slider").value);
+
 }
 function showMaxPrice(){
     let minS = document.getElementById("min-price-slider");
@@ -16,9 +19,11 @@ function showMaxPrice(){
         style: 'currency',
         currency: 'VND',
     });
-    document.getElementById("max-price-value").innerText = "to:" +formatter.format(document.getElementById("max-price-slider").value);
-    minS.max = maxS.value;
-    minS.width = (minS.max - maxS.min)/(maxS.max - minS.min);
+    if(maxS.value < minS.value){
+        minS.value = maxS.value;
+    }
+    document.getElementById("min-price-value").innerText = "Min:" + formatter.format(minS.value);
+    document.getElementById("max-price-value").innerText = "Max:" +formatter.format(document.getElementById("max-price-slider").value);
 }
 
 function getCategories(){
@@ -133,6 +138,20 @@ function showCart(){
     };
     xmlhttp.open("POST",
         "/api/cart.php?" +
+        "userId=" + sessionStorage.getItem("userid"),
+        true);
+    xmlhttp.send();
+}
+
+function showOrder(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".container").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST",
+        "/api/order.php?" +
         "userId=" + sessionStorage.getItem("userid"),
         true);
     xmlhttp.send();

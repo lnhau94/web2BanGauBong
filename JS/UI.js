@@ -6,6 +6,7 @@ function OpenLogin(){
     }else{
         sessionStorage.removeItem("userid");
         document.getElementById("btnCart").style.display = "none";
+        document.getElementById("btnOrder").style.display = "none";
         alert("logout!");
     }
 
@@ -27,17 +28,26 @@ function HideShowPassword(){
     }else{
         document.getElementById("txtPassword").type = "password";
     }
-
 }
+
+function HideShowPassword1(element){
+    if(element.querySelector("input").type == "password"){
+        element.querySelector("input").type = "text";
+    }else{
+        element.querySelector("input").type= "password";
+    }
+}
+
 function login(){
     let username = document.getElementById("txtUsername").value;
     let pass = document.getElementById("txtPassword").value;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText != "-1"){
-                sessionStorage.setItem("userid",this.responseText);
+            if(this.responseText == "0"){
+                sessionStorage.setItem("userid",username);
                 document.getElementById("btnCart").style.display = "block";
+                document.getElementById("btnOrder").style.display = "block";
                 ExitLog();
             }else{
                 alert("Log in fail!");

@@ -31,11 +31,13 @@
                         echo '</div>';
                     }
             echo '</div>';
-            echo '<label id="min-price-value"></label>';
-            echo '<label id="max-price-value"></label>';
             echo '<div class="hau-slider-holder">';
-            echo '<input onchange="showMinPrice()" id="min-price-slider" class="hau-slider-price" type="range" min="0" max="500000" step="1" value="0">';
-            echo '<input onchange="showMaxPrice()" id="max-price-slider" class="hau-slider-price" type="range" min="500000" max="1000000" step="1000" value="1000000">';
+                echo '<label style="width: 40%" id="min-price-value"></label>';
+                echo '<input onchange="showMinPrice()" id="min-price-slider" class="hau-slider-price" type="range" min="0" max="1000000" step="1" value="0">';
+            echo '</div>';
+            echo '<div class="hau-slider-holder">';
+                echo '<label style="width: 40%" id="max-price-value"></label>';
+                echo '<input onchange="showMaxPrice()" id="max-price-slider" class="hau-slider-price" type="range" min="0" max="1000000" step="1000" value="1000000">';
             echo '</div>';
         echo '</div>';
     }  

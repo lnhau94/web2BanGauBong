@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="CSS/Hau-Product.css">
     <link rel="stylesheet" href="CSS/Hau-product-page.css">
     <link rel="stylesheet" href="CSS/Hau-Cart.css">
+    <link rel="stylesheet" href="CSS/Huy_CheckOrder.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <script src="JS/UI.js"></script>
@@ -30,6 +31,7 @@
     <script>
         if(!sessionStorage.getItem("userid")){
             document.getElementById("btnCart").style.display = "none";
+            document.getElementById("btnOrder").style.display = "none";
         }
     </script>
 </body>
