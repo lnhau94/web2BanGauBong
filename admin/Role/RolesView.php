@@ -126,7 +126,10 @@ include_once __DIR__."/NewRoleForm.php";
             })
             let xml = new XMLHttpRequest();
             xml.onreadystatechange = function(){
-                showPermission(roleChoice);
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Save Success!");
+                    showPermission(roleChoice);
+                }
             }
             xml.open("POST","/api/addpermission.php?roleId=" + roleChoice.dataset.id +
                 "&functionId=" + fid

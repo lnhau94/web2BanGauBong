@@ -139,6 +139,55 @@
     background-color: #FFF4F9;
     color: #FF7B9B;
 }
+.hau-instock-table-row{
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+#dataTable{
+    max-height: 80%;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+#dataTable:not(:has(.hau-instock-table-row)) > .titles-site{
+    display: none;
+}
+
+.hau-instock-table-header{
+    border: 1px solid #950b2d;
+    background-color: #FFF4F9;
+    color: #FF7B9B;
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    margin: 3px;
+    border-radius: 5px;
+}
+.hau-instock-table-header *{
+    padding: 3px;
+}
+
+.hau-instock-table-row input{
+    background-color: transparent;
+    color: inherit;
+    border: transparent;
+    height: 80%;
+}
+.hau-instock-table-row label{
+    margin: 5px;
+}
+
+
+.hau-instock-table-row:nth-child(even){
+    background-color: #FFF4F9;
+    color: #FF7B9B;
+}
+.hau-instock-table-row:nth-child(odd){
+    background-color: #f2f2f2;
+    color: #FF7B9B;
+}
 
 .hau-category-body > *:nth-child(2n){
     background-color: #fdbdcd;

@@ -10,13 +10,16 @@
                                 "role" => "fa-solid fa-key",
                                 "category" => "fa-solid fa-box",
                                 "bill" => "fa-solid fa-money-bill",
-                                "statistics" => "fa-solid fa-arrow-trend-up");
+                                "statistics" => "fa-solid fa-arrow-trend-up",
+                                "storage" => "fa-solid fa-warehouse"
+                );
             $Nav_Names = array( "account" => "TÀI KHOẢN",
                 "product" => "SẢN PHẨM",
                 "role" => "PHÂN QUYỀN",
                 "category" => "LOẠI SẢN PHẨM",
                 "bill" => "HÓA ĐƠN",
-                "statistics" => "THỐNG KÊ");
+                "statistics" => "THỐNG KÊ",
+                "storage" => "NHẬP KHO");
 
 
             // Khởi tạo menu
